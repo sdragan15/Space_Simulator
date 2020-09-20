@@ -1,0 +1,15 @@
+body{
+	margin: 0px;
+}
+
+#container{
+	background: white;
+	display: flex;
+	box-sizing: border-box;
+	height: 100vh;
+	/*border: solid 10px black;*/
+	/*position: relative;*/
+	justify-content: center;
+	align-items: center;
+}
+
