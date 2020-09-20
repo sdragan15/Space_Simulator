@@ -2,6 +2,10 @@ var container_width = document.getElementById("container").offsetWidth;
 var container_height = document.getElementById("container").offsetHeight;
 
 const G = 0.01;
+var locked = false;
+var screen_x = 0;
+var screen_y = 0;
+
 
 sunce = new Planet(70,7000);
 sunce.move(0,0,0,0);
@@ -28,6 +32,7 @@ function setup(){
 	
 }
 
+
 function draw(){
 	
 	background(0, 2, 65);
@@ -53,5 +58,26 @@ function draw(){
 
 	
 }
+
+function mouseDragged(event){
+	screen_x = event.movementX;
+	screen_y = event.movementY;
+	if(locked){
+		for(let i=0; i<allPlanets.length; i++){
+			allPlanets[i].x += screen_x;
+			allPlanets[i].y += screen_y;
+		}
+	}
+}
+
+
+function mousePressed(){
+	locked = true;
+}
+
+function mouseReleased() {
+  locked = false;
+}
+
 
 // console.log(14);
