@@ -18,8 +18,9 @@ merkur = new Planet(20,10);
 merkur.move(0,-1000,8.2,0);
 mesec = new Planet(10,0.1);
 mesec.move(2200,0,0,9);
-jupiter = new Planet(50,80);
+jupiter = new Planet(50,2000);
 jupiter.move(-5000,0,0,-4);
+
 
 var allPlanets;
 
@@ -46,19 +47,24 @@ function draw(){
 	
 
 	sunce.update(allPlanets);
-	sunce.show( 255, 247, 75 );
+	sunce.colour(255, 247, 75);
+	sunce.show();
 
 	mesec.update(allPlanets);
-	mesec.show( 167, 180, 189 );
+	mesec.colour( 167, 180, 189 );
+	mesec.show();
 
 	zemlja.update(allPlanets);
-	zemlja.show( 36, 205, 255 );
+	zemlja.colour( 36, 205, 255 );
+	zemlja.show();
 
 	merkur.update(allPlanets);
-	merkur.show(218, 150, 104);
+	merkur.colour(218, 150, 104);
+	merkur.show();
 
 	jupiter.update(allPlanets);
-	jupiter.show( 214, 198, 94 );
+	jupiter.colour(214, 198, 94 );
+	jupiter.show();
 
 	
 }

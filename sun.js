@@ -14,6 +14,12 @@ class Planet{
 		this.R = 1;
 	}
 
+	colour(a,b,c){
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+
 	update(all){
 		for(let i=0; i<=all.length-1; i++){
 			if(all[i] != this){
@@ -44,8 +50,12 @@ class Planet{
 	}
 
 
-	show(a,b,c){
-		fill(a,b,c);
+	trail(){
+
+	}
+
+	show(){
+		fill(this.a,this.b,this.c);
 		ellipse(this.x, this.y, this.radius, this.radius);
 	}
 }
