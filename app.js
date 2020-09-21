@@ -3,6 +3,8 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplayer
+var ZOOM = 1;			
+
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
@@ -30,17 +32,16 @@ function setup(){
 	cvs = createCanvas(container_width,container_height);
 	cvs.parent('container');
 	background(0, 2, 65);
-	
 }
 
 
 function draw(){
-	
+
 	background(0, 2, 65);
 	
-	sunce.center(allPlanets);
+	zooming(width, height);	
 
-	translate(width/2, height/2);
+	sunce.center(allPlanets);
 
 	sunce.update(allPlanets);
 	sunce.show( 255, 247, 75 );
@@ -65,8 +66,8 @@ function mouseDragged(event){
 	screen_y = event.movementY;
 	if(locked){
 		for(let i=0; i<allPlanets.length; i++){
-			allPlanets[i].x += screen_x;
-			allPlanets[i].y += screen_y;
+			allPlanets[i].x += screen_x/ZOOM;
+			allPlanets[i].y += screen_y/ZOOM;
 		}
 	}
 }
@@ -81,4 +82,12 @@ function mouseReleased() {
 }
 
 
-// console.log(14);
+function mouseWheel(event){
+	if(event.delta > 0){
+		ZOOM *= 1.1;
+	}
+	else{
+		ZOOM *= 0.9;
+	}
+}
+

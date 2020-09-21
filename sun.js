@@ -3,7 +3,7 @@ class Planet{
 	constructor(r, m){
 		this.radius = r;
 		this.mass = m*M;
-		
+		// console.log(ZOOM);
 	}
 
 	move(x,y,X,Y){
