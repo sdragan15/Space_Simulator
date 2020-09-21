@@ -3,11 +3,15 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplayer
-var ZOOM = 0.1;			
+const THICKNES = 0.2;
+const HISTORY = 500;
 
+
+var ZOOM = 0.1;			
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
+
 
 
 sunce = new Planet(200,90000);
@@ -40,7 +44,7 @@ function setup(){
 function draw(){
 	background(0, 2, 65);
 	
-	sunce.center(allPlanets);
+	// sunce.center(allPlanets);
 
 	zooming(width, height);	
 
@@ -48,23 +52,29 @@ function draw(){
 
 	sunce.update(allPlanets);
 	sunce.colour(255, 247, 75);
+	sunce.trail();							// First put trail and then show
 	sunce.show();
+	
 
 	mesec.update(allPlanets);
 	mesec.colour( 167, 180, 189 );
 	mesec.show();
+	mesec.trail();
 
 	zemlja.update(allPlanets);
 	zemlja.colour( 36, 205, 255 );
 	zemlja.show();
+	zemlja.trail();
 
 	merkur.update(allPlanets);
 	merkur.colour(218, 150, 104);
 	merkur.show();
+	merkur.trail();
 
 	jupiter.update(allPlanets);
 	jupiter.colour(214, 198, 94 );
 	jupiter.show();
+	jupiter.trail();
 
 	
 }
@@ -76,6 +86,11 @@ function mouseDragged(event){
 		for(let i=0; i<allPlanets.length; i++){
 			allPlanets[i].x += screen_x/ZOOM;
 			allPlanets[i].y += screen_y/ZOOM;
+			for(let j=0; j<allPlanets[i].array.length; j++){
+				allPlanets[i].array[j].x += screen_x/ZOOM;
+				allPlanets[i].array[j].y += screen_y/ZOOM;
+			}
+			
 		}
 	}
 }
