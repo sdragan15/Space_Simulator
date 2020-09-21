@@ -1,22 +1,23 @@
 var container_width = document.getElementById("container").offsetWidth;
 var container_height = document.getElementById("container").offsetHeight;
 
-const G = 0.01;
+const G = 1;
+const M = 1;    			///Multiplayer
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
 
 
-sunce = new Planet(70,7000);
+sunce = new Planet(70,9000);
 sunce.move(0,0,0,0);
-zemlja = new Planet(30,200);
-zemlja.move(200,0,0,10);
+zemlja = new Planet(30,80);
+zemlja.move(200,0,0,7.5);
 merkur = new Planet(20,10);
-merkur.move(0,-100,8,0);
-mesec = new Planet(10,1);
-mesec.move(220,0,0,11.3);
-jupiter = new Planet(50,800);
-jupiter.move(-500,0,0,-10);
+merkur.move(0,-100,8.2,0);
+mesec = new Planet(10,0.1);
+mesec.move(220,0,0,9.4);
+jupiter = new Planet(50,80);
+jupiter.move(-500,0,0,-4);
 
 var allPlanets;
 

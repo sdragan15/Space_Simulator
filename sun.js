@@ -2,7 +2,7 @@ class Planet{
 
 	constructor(r, m){
 		this.radius = r;
-		this.mass = m;
+		this.mass = m*M;
 		
 	}
 
@@ -21,7 +21,7 @@ class Planet{
 					// console.log(all[i].x);
 					// console.log(all[i].mass);
 					 this.R = sqrt(Math.pow((all[i].x - this.x),2) + Math.pow((all[i].y - this.y),2));
-					 this.Force = G*(all[i].mass)/this.R;
+					 this.Force = G*(all[i].mass)/Math.pow(this.R,2);
 					 // console.log(this.Force);
 					 // console.log(this);
 					 // console.log(this.Force);
