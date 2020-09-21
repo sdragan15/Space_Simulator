@@ -1,0 +1,1 @@
+When activate functions trail() and show(), first activate trail() and thes show().
