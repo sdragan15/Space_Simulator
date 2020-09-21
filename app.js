@@ -3,23 +3,23 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplayer
-var ZOOM = 1;			
+var ZOOM = 0.1;			
 
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
 
 
-sunce = new Planet(70,9000);
+sunce = new Planet(200,90000);
 sunce.move(0,0,0,0);
-zemlja = new Planet(30,80);
-zemlja.move(200,0,0,7.5);
+zemlja = new Planet(50,800);
+zemlja.move(2000,0,0,7.5);
 merkur = new Planet(20,10);
-merkur.move(0,-100,8.2,0);
+merkur.move(0,-1000,8.2,0);
 mesec = new Planet(10,0.1);
-mesec.move(220,0,0,9.4);
+mesec.move(2200,0,0,9);
 jupiter = new Planet(50,80);
-jupiter.move(-500,0,0,-4);
+jupiter.move(-5000,0,0,-4);
 
 var allPlanets;
 
@@ -32,16 +32,18 @@ function setup(){
 	cvs = createCanvas(container_width,container_height);
 	cvs.parent('container');
 	background(0, 2, 65);
+
 }
 
 
 function draw(){
-
 	background(0, 2, 65);
 	
+	sunce.center(allPlanets);
+
 	zooming(width, height);	
 
-	sunce.center(allPlanets);
+	
 
 	sunce.update(allPlanets);
 	sunce.show( 255, 247, 75 );
