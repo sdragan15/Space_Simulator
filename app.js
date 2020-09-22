@@ -3,18 +3,21 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplayer
-const THICKNES = 0.2;
-const HISTORY = 500;
+const THICKNES = 0.2;		/// Thicknes of trail
+const HISTORY = 100;		/// How long is trail
 
 
 var ZOOM = 0.1;			
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
+var pause = true;			/// Pause the game
 
 
+//Planet(diameter, mass);
+//Planet.move(x, y, x.Velocity, y.Velocity);
 
-sunce = new Planet(200,90000);
+sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
 zemlja = new Planet(50,800);
 zemlja.move(2000,0,0,7.5);
@@ -37,11 +40,14 @@ function setup(){
 	cvs = createCanvas(container_width,container_height);
 	cvs.parent('container');
 	background(0, 2, 65);
-
+	
 }
 
 
 function draw(){
+
+
+	
 	background(0, 2, 65);
 	
 	// sunce.center(allPlanets);
@@ -75,9 +81,26 @@ function draw(){
 	jupiter.colour(214, 198, 94 );
 	jupiter.show();
 	jupiter.trail();
-
 	
 }
+
+function keyPressed(event) {							/// pausing the game
+	if(pause){
+		if(event.key == 'p' || event.key == 'P'){
+			pause = false;
+			noLoop();
+		}
+	}
+	else{
+		if(event.key == 'p' || event.key == 'P'){
+			pause = true;
+			loop();
+		}
+	}
+	
+}
+
+
 
 function mouseDragged(event){
 	screen_x = event.movementX;
@@ -113,4 +136,3 @@ function mouseWheel(event){
 		ZOOM *= 0.9;
 	}
 }
-
