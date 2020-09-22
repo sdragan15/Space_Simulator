@@ -1,3 +1,3 @@
-When activate functions trail() and show(), first activate trail() and thes show().
+When activate functions trail() and show(), first activate trail() and then show().
 
-On key 'P' pause a game
+On key 'P' pause the game
