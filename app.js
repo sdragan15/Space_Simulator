@@ -5,6 +5,8 @@ const G = 1;
 const M = 1;    			///Multiplayer
 const THICKNES = 0.2;		/// Thicknes of trail
 const HISTORY = 10;		/// How long is trail
+const N_TIME = 1;		/// What is normal time
+const TIME_FASTEN = 1;		/// How fast time is changing
 
 
 var ZOOM = 0.1;			
@@ -12,6 +14,8 @@ var locked = false;
 var screen_x = 0;
 var screen_y = 0;
 var pause = true;			/// Pause the game
+var time = N_TIME;				/// slow down time
+var t = time;				/// for time
 
 
 //Planet(diameter, mass);
@@ -45,52 +49,68 @@ function setup(){
 
 
 function draw(){
-
-
 	
 	background(0, 2, 65);
 	
-	sunce.center(allPlanets);
+	sunce.center();
 
 	zooming(width, height);	
 
 	
 
-	sunce.update(allPlanets);
+	sunce.update(time);
 	sunce.colour(255, 247, 75);
 	sunce.trail();							// First put trail and then show
 	sunce.show();
 	
 
-	mesec.update(allPlanets);
+	mesec.update(time);
 	mesec.colour( 167, 180, 189 );
 	mesec.trail();
 	mesec.show();
 	
 
-	zemlja.update(allPlanets);
+	zemlja.update(time);
 	zemlja.colour( 36, 205, 255 );
 	zemlja.trail();
 	zemlja.show();
 	
 
-	merkur.update(allPlanets);
+	merkur.update(time);
 	merkur.colour(218, 150, 104);
 	merkur.trail();
 	merkur.show();
 	
 
-	jupiter.update(allPlanets);
+	jupiter.update(time);
 	jupiter.colour(214, 198, 94 );
 	jupiter.trail();
 	jupiter.show();
+
+	t--;
+	if(t < N_TIME){
+		t =	time;
+	}
 	
 	
 }
 
-function keyPressed(event) {							/// pausing the game
+function keyPressed(event) {							
+	if(event.key == 's' || event.key == 'S'){			///slow down time
+		time += TIME_FASTEN;
+		// console.log(time);
+	}
+	else if(event.key == 'f' || event.key == 'F'){
+		if(time > N_TIME){
+			time -= TIME_FASTEN;
+		}
+	}
+	if(event.key == 'n' || event.key == 'N'){			/// reset time
+		time = N_TIME;
+	}
+
 	if(pause){
-		if(event.key == 'p' || event.key == 'P'){
+		if(event.key == 'p' || event.key == 'P'){			/// pausing the game
 			pause = false;
 		}
 	}

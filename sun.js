@@ -21,21 +21,21 @@ class Planet{
 		this.c = c;
 	}
 
-	update(all){
-		if(pause){
+	update(time){
+		if(pause && t == 1){
 			// console.log(123);
-			for(let i=0; i<=all.length-1; i++){
-				if(all[i] != this){
+			for(let i=0; i<=allPlanets.length-1; i++){
+				if(allPlanets[i] != this){
 					if(this.R != 0){
-						// console.log(all[i].x);
-						// console.log(all[i].mass);
-						 this.R = sqrt(Math.pow((all[i].x - this.x),2) + Math.pow((all[i].y - this.y),2));
-						 this.Force = G*(all[i].mass)/Math.pow(this.R,2);
+						// console.log(allPlanets[i].x);
+						// console.log(allPlanets[i].mass);
+						 this.R = sqrt(Math.pow((allPlanets[i].x - this.x),2) + Math.pow((allPlanets[i].y - this.y),2));
+						 this.Force = G*(allPlanets[i].mass)/Math.pow(this.R,2);
 						 // console.log(this.Force);
 						 // console.log(this);
 						 // console.log(this.Force);
-						 this.X += (all[i].x - this.x)*this.Force/(this.R);
-						 this.Y += (all[i].y - this.y)*this.Force/(this.R);
+						 this.X += (allPlanets[i].x - this.x)*this.Force/(this.R);
+						 this.Y += (allPlanets[i].y - this.y)*this.Force/(this.R);
 					}
 					
 				}
@@ -55,11 +55,11 @@ class Planet{
 		
 	}
 
-	center(all){
+	center(){
 		if(pause){
-			for(let i=0; i<all.length; i++){		
-				all[i].x -= this.X;
-				all[i].y -= this.Y;
+			for(let i=0; i<allPlanets.length; i++){		
+				allPlanets[i].x -= this.X;
+				allPlanets[i].y -= this.Y;
 			}
 		}
 	}
