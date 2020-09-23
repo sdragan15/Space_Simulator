@@ -23,6 +23,7 @@ class Planet{
 
 	update(all){
 		if(pause){
+			// console.log(123);
 			for(let i=0; i<=all.length-1; i++){
 				if(all[i] != this){
 					if(this.R != 0){
@@ -55,9 +56,11 @@ class Planet{
 	}
 
 	center(all){
-		for(let i=0; i<all.length; i++){		
-			all[i].x -= this.X;
-			all[i].y -= this.Y;
+		if(pause){
+			for(let i=0; i<all.length; i++){		
+				all[i].x -= this.X;
+				all[i].y -= this.Y;
+			}
 		}
 	}
 

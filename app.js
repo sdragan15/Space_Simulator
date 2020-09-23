@@ -19,13 +19,13 @@ var pause = true;			/// Pause the game
 
 sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
-zemlja = new Planet(50,800);
+zemlja = new Planet(80,800);
 zemlja.move(2000,0,0,7.5);
-merkur = new Planet(20,10);
+merkur = new Planet(50,10);
 merkur.move(0,-1000,8.2,0);
-mesec = new Planet(10,0.1);
+mesec = new Planet(30,0.1);
 mesec.move(2200,0,0,9);
-jupiter = new Planet(50,2000);
+jupiter = new Planet(100,2000);
 jupiter.move(-5000,0,0,-4);
 
 
@@ -64,23 +64,27 @@ function draw(){
 
 	mesec.update(allPlanets);
 	mesec.colour( 167, 180, 189 );
-	mesec.show();
 	mesec.trail();
+	mesec.show();
+	
 
 	zemlja.update(allPlanets);
 	zemlja.colour( 36, 205, 255 );
-	zemlja.show();
 	zemlja.trail();
+	zemlja.show();
+	
 
 	merkur.update(allPlanets);
 	merkur.colour(218, 150, 104);
-	merkur.show();
 	merkur.trail();
+	merkur.show();
+	
 
 	jupiter.update(allPlanets);
 	jupiter.colour(214, 198, 94 );
-	jupiter.show();
 	jupiter.trail();
+	jupiter.show();
+	
 	
 }
 
