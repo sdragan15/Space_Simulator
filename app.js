@@ -4,7 +4,7 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplayer
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 100;		/// How long is trail
+const HISTORY = 10;		/// How long is trail
 
 
 var ZOOM = 0.1;			
@@ -50,7 +50,7 @@ function draw(){
 	
 	background(0, 2, 65);
 	
-	// sunce.center(allPlanets);
+	sunce.center(allPlanets);
 
 	zooming(width, height);	
 
@@ -88,13 +88,11 @@ function keyPressed(event) {							/// pausing the game
 	if(pause){
 		if(event.key == 'p' || event.key == 'P'){
 			pause = false;
-			noLoop();
 		}
 	}
 	else{
 		if(event.key == 'p' || event.key == 'P'){
 			pause = true;
-			loop();
 		}
 	}
 	
