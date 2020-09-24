@@ -5,3 +5,5 @@ On key 'P' pause the game
 On key 'S' slow down time, on key 'F' speed up time
 
 On key 'N' reset time
+
+When pause is pressed you can move planets around with mouse.
