@@ -7,6 +7,7 @@ const THICKNES = 0.2;		/// Thicknes of trail
 const HISTORY = 10;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
+const NUM_MOVE = -1;		/// Zero planet for moving
 
 
 var ZOOM = 0.1;			
@@ -16,6 +17,7 @@ var screen_y = 0;
 var pause = true;			/// Pause the game
 var time = N_TIME;				/// slow down time
 var t = time;				/// for time
+var numMove = NUM_MOVE;			/// Number of planets you want to move
 
 
 //Planet(diameter, mass);
@@ -52,7 +54,7 @@ function draw(){
 	
 	background(0, 2, 65);
 	
-	sunce.center();
+	// sunce.center();
 
 	zooming(width, height);	
 
@@ -127,7 +129,7 @@ function keyPressed(event) {
 function mouseDragged(event){
 	screen_x = event.movementX;
 	screen_y = event.movementY;
-	if(locked){
+	if(locked && numMove == NUM_MOVE){
 		for(let i=0; i<allPlanets.length; i++){
 			allPlanets[i].x += screen_x/ZOOM;
 			allPlanets[i].y += screen_y/ZOOM;
@@ -138,15 +140,35 @@ function mouseDragged(event){
 			
 		}
 	}
+
+	if(numMove != NUM_MOVE){
+		allPlanets[numMove].x += event.movementX/ZOOM;
+		allPlanets[numMove].y += event.movementY/ZOOM;
+		// console.log(ZOOM);
+	}
 }
 
 
 function mousePressed(){
-	locked = true;
+	locked = true;						/// For moving screen
+
+
+	if(!pause){							/// For moving planets around
+		for(let i=0; i<allPlanets.length; i++){
+			let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
+			let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
+			if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
+				numMove = i;
+				// console.log(numMove);
+			}
+		}
+
+	}
 }
 
 function mouseReleased() {
   locked = false;
+  numMove = NUM_MOVE;
 }
 
 
