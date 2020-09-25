@@ -18,6 +18,7 @@ var pause = true;			/// Pause the game
 var time = N_TIME;				/// slow down time
 var t = time;				/// for time
 var numMove = NUM_MOVE;			/// Number of planets you want to move
+var changeVelocity = false;		/// Change velocity of planets with mouse
 
 
 //Planet(diameter, mass);
@@ -97,7 +98,14 @@ function draw(){
 	
 }
 
-function keyPressed(event) {							
+function keyPressed(event) {	
+	if(event.key == 'Control'){					/// Changing velocity of planets with mouse
+		changeVelocity = true;
+		console.log(121);
+	}
+	
+
+
 	if(event.key == 's' || event.key == 'S'){			///slow down time
 		time += TIME_FASTEN;
 		// console.log(time);
@@ -107,9 +115,12 @@ function keyPressed(event) {
 			time -= TIME_FASTEN;
 		}
 	}
+
+
 	if(event.key == 'n' || event.key == 'N'){			/// reset time
 		time = N_TIME;
 	}
+
 
 	if(pause){
 		if(event.key == 'p' || event.key == 'P'){			/// pausing the game
@@ -124,28 +135,43 @@ function keyPressed(event) {
 	
 }
 
+function keyReleased(){
+	if(event.key == 'Control'){					/// Changing velocity of plantes with mouse
+		changeVelocity = false;
+	}
+}
+
 
 
 function mouseDragged(event){
 	screen_x = event.movementX;
 	screen_y = event.movementY;
-	if(locked && numMove == NUM_MOVE){
-		for(let i=0; i<allPlanets.length; i++){
-			allPlanets[i].x += screen_x/ZOOM;
-			allPlanets[i].y += screen_y/ZOOM;
-			for(let j=0; j<allPlanets[i].array.length; j++){
-				allPlanets[i].array[j].x += screen_x/ZOOM;
-				allPlanets[i].array[j].y += screen_y/ZOOM;
-			}
-			
+	if(changeVelocity){
+		if(numMove != NUM_MOVE){
+			allPlanets[numMove].X += event.movementX/(ZOOM*100);
+			allPlanets[numMove].Y += event.movementY/(ZOOM*100);
 		}
 	}
+	else{
+		if(locked && numMove == NUM_MOVE){
+			for(let i=0; i<allPlanets.length; i++){
+				allPlanets[i].x += screen_x/ZOOM;
+				allPlanets[i].y += screen_y/ZOOM;
+				for(let j=0; j<allPlanets[i].array.length; j++){
+					allPlanets[i].array[j].x += screen_x/ZOOM;
+					allPlanets[i].array[j].y += screen_y/ZOOM;
+				}
+				
+			}
+		}
 
-	if(numMove != NUM_MOVE){
-		allPlanets[numMove].x += event.movementX/ZOOM;
-		allPlanets[numMove].y += event.movementY/ZOOM;
-		// console.log(ZOOM);
+		if(numMove != NUM_MOVE){
+			allPlanets[numMove].x += event.movementX/ZOOM;
+			allPlanets[numMove].y += event.movementY/ZOOM;
+			// console.log(ZOOM);
+		}
 	}
+	
 }
 
 
