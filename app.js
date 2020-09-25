@@ -4,17 +4,18 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 10;		/// How long is trail
+const HISTORY = 100;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
+const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
 
 
 var ZOOM = 0.1;			
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
-var pause = true;			/// Pause the game
+var pause = false;			/// Pause the game
 var time = N_TIME;				/// slow down time
 var t = time;				/// for time
 var numMove = NUM_MOVE;			/// Number of planets you want to move
@@ -46,14 +47,14 @@ var cvs;
 function setup(){
 	cvs = createCanvas(container_width,container_height);
 	cvs.parent('container');
-	background(0, 2, 65);
+	background(0, 1, 43);
 	
 }
 
 
 function draw(){
 	
-	background(0, 2, 65);
+	background(0, 1, 43);
 	
 	// sunce.center();
 
@@ -101,7 +102,7 @@ function draw(){
 function keyPressed(event) {	
 	if(event.key == 'Control'){					/// Changing velocity of planets with mouse
 		changeVelocity = true;
-		console.log(121);
+		// console.log(121);
 	}
 	
 
@@ -147,9 +148,9 @@ function mouseDragged(event){
 	screen_x = event.movementX;
 	screen_y = event.movementY;
 	if(changeVelocity){
-		if(numMove != NUM_MOVE){
-			allPlanets[numMove].X += event.movementX/(ZOOM*100);
-			allPlanets[numMove].Y += event.movementY/(ZOOM*100);
+		if(numMove != NUM_MOVE){									/// Changing velocity of planets
+			allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
+			allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
 		}
 	}
 	else{
@@ -187,6 +188,10 @@ function mousePressed(){
 				if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
 					numMove = i;
 					// console.log(numMove);
+					if(changeVelocity){
+						allPlanets[i].X = 0;
+						allPlanets[i].Y = 0;
+					}
 				}
 			}
 
