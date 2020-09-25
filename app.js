@@ -2,7 +2,7 @@ var container_width = document.getElementById("container").offsetWidth;
 var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
-const M = 1;    			///Multiplayer
+const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
 const HISTORY = 10;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
@@ -150,20 +150,23 @@ function mouseDragged(event){
 
 
 function mousePressed(){
-	locked = true;						/// For moving screen
+	if(event.button == 0){
+		locked = true;						/// For moving screen
 
 
-	if(!pause){							/// For moving planets around
-		for(let i=0; i<allPlanets.length; i++){
-			let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
-			let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
-			if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
-				numMove = i;
-				// console.log(numMove);
+		if(!pause){							/// For moving planets around
+			for(let i=0; i<allPlanets.length; i++){
+				let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
+				let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
+				if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
+					numMove = i;
+					// console.log(numMove);
+				}
 			}
-		}
 
+		}
 	}
+	
 }
 
 function mouseReleased() {
