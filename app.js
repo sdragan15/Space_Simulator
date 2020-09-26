@@ -31,17 +31,18 @@ var saveY;						/// save position of planets before changing velocity
 sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
 zemlja = new Planet(80,800);
-zemlja.move(0,0,0,0);
+zemlja.move(1000,0,0,0);
 merkur = new Planet(50,10);
-merkur.move(0,0,0,0);
+merkur.move(500,0,0,0);
 mesec = new Planet(30,0.1);
-mesec.move(0,0,0,0);
+mesec.move(1200,0,0,0);
 jupiter = new Planet(100,2000);
-jupiter.move(0,0,0,0);
+jupiter.move(3000,0,0,0);
 
 
 var allPlanets;
 
+var centerPlanet = sunce;				/// what is center planet
 
 allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
 
@@ -55,11 +56,12 @@ function setup(){
 }
 
 
+
 function draw(){
 	
 	background(0, 1, 43);
 	
-	// sunce.center();
+	centerPlanet.center();
 
 	zooming(width, height);	
 
@@ -158,7 +160,7 @@ function mouseDragged(event){
 		if(numMove != NUM_MOVE){									/// Changing velocity of planets
 			allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
 			allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
-			allPlanets[numMove].calculPrediction();
+			allPlanets[numMove].calculPrediction(centerPlanet);
 		}
 	}
 	else{
