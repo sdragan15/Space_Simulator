@@ -9,6 +9,7 @@ const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
+const PREDICTION = 1000;			/// prediction of moving
 
 
 var ZOOM = 0.1;			
@@ -20,6 +21,8 @@ var time = N_TIME;				/// slow down time
 var t = time;				/// for time
 var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
+var saveX;
+var saveY;						/// save position of planets before changing velocity
 
 
 //Planet(diameter, mass);
@@ -28,13 +31,13 @@ var changeVelocity = false;		/// Change velocity of planets with mouse
 sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
 zemlja = new Planet(80,800);
-zemlja.move(2000,0,0,7.5);
+zemlja.move(0,0,0,0);
 merkur = new Planet(50,10);
-merkur.move(0,-1000,8.2,0);
+merkur.move(0,0,0,0);
 mesec = new Planet(30,0.1);
-mesec.move(2200,0,0,9);
+mesec.move(0,0,0,0);
 jupiter = new Planet(100,2000);
-jupiter.move(-5000,0,0,-4);
+jupiter.move(0,0,0,0);
 
 
 var allPlanets;
@@ -62,34 +65,39 @@ function draw(){
 
 	
 
-	sunce.update(time);
+	sunce.update();
 	sunce.colour(255, 247, 75);
 	sunce.trail();							// First put trail and then show
 	sunce.show();
+	sunce.showPrediction();
 	
 
-	mesec.update(time);
+	mesec.update();
 	mesec.colour( 167, 180, 189 );
 	mesec.trail();
 	mesec.show();
+	mesec.showPrediction();
 	
 
-	zemlja.update(time);
+	zemlja.update();
 	zemlja.colour( 36, 205, 255 );
 	zemlja.trail();
 	zemlja.show();
+	zemlja.showPrediction();
 	
 
-	merkur.update(time);
+	merkur.update();
 	merkur.colour(218, 150, 104);
 	merkur.trail();
 	merkur.show();
+	merkur.showPrediction();
 	
 
-	jupiter.update(time);
+	jupiter.update();
 	jupiter.colour(214, 198, 94 );
 	jupiter.trail();
 	jupiter.show();
+	jupiter.showPrediction();
 
 	t--;
 	if(t < N_TIME){
@@ -103,8 +111,7 @@ function keyPressed(event) {
 	if(event.key == 'Control'){					/// Changing velocity of planets with mouse
 		changeVelocity = true;
 		// console.log(121);
-	}
-	
+	}	
 
 
 	if(event.key == 's' || event.key == 'S'){			///slow down time
@@ -138,7 +145,7 @@ function keyPressed(event) {
 
 function keyReleased(){
 	if(event.key == 'Control'){					/// Changing velocity of plantes with mouse
-		changeVelocity = false;
+		changeVelocity = false;		
 	}
 }
 
@@ -151,6 +158,7 @@ function mouseDragged(event){
 		if(numMove != NUM_MOVE){									/// Changing velocity of planets
 			allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
 			allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
+			allPlanets[numMove].calculPrediction();
 		}
 	}
 	else{
@@ -187,6 +195,8 @@ function mousePressed(){
 				let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
 				if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
 					numMove = i;
+					saveX = allPlanets[i].x;
+					saveY = allPlanets[i].y;
 					// console.log(numMove);
 					if(changeVelocity){
 						allPlanets[i].X = 0;
@@ -202,6 +212,11 @@ function mousePressed(){
 
 function mouseReleased() {
   locked = false;
+  if(numMove != -1){						/// delete predictions
+  	allPlanets[numMove].predArray = [];
+  }
+  
+  
   numMove = NUM_MOVE;
 }
 

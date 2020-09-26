@@ -5,6 +5,7 @@ class Planet{
 		this.mass = m*M;
 		// console.log(ZOOM);
 		this.array = [];
+		this.predArray = [];
 	}
 
 	move(x,y,X,Y){
@@ -21,7 +22,7 @@ class Planet{
 		this.c = c;
 	}
 
-	update(time){
+	update(){
 		if(pause && t == 1){
 			// console.log(123);
 			for(let i=0; i<=allPlanets.length-1; i++){
@@ -78,10 +79,55 @@ class Planet{
 
 	show(){
 		stroke(0);
-		strokeWeight(3);
+		strokeWeight(this.radius * 0.05);
 		fill(this.a,this.b,this.c);
 		ellipse(this.x, this.y, this.radius, this.radius);
 	}
+
+	calculPrediction(){
+		this.predArray = [];
+		let predX = this.x;
+		let predY = this.y;
+		let moveX = this.X;
+		let moveY = this.Y;
+
+		for(let j=0; j<PREDICTION; j++){
+			for(let i=0; i<=allPlanets.length-1; i++){
+				if(allPlanets[i] != this){
+					if(this.R != 0){
+						// console.log(allPlanets[i].x);
+						// console.log(allPlanets[i].mass);
+						 this.R = sqrt(Math.pow((allPlanets[i].x - predX),2) + Math.pow((allPlanets[i].y - predY),2));
+						 this.Force = G*(allPlanets[i].mass)/Math.pow(this.R,2);
+						 // console.log(this.Force);
+						 // console.log(this);
+						 // console.log(this.Force);
+						 moveX += (allPlanets[i].x - predX)*this.Force/(this.R);
+						 moveY += (allPlanets[i].y - predY)*this.Force/(this.R);
+					}
+					
+				}
+			}
+			// console.log(this.X);
+			predX += moveX;
+			predY += moveY;
+			if(j%2 == 0){
+				this.predArray.push({x: predX, y: predY});
+			}
+			
+		}	
+	}
+
+	showPrediction(){
+		for(let i=0; i<this.predArray.length; i++){
+			let tx = this.predArray[i].x;
+			let ty = this.predArray[i].y;
+			noStroke();
+			fill(this.a, this.b, this.c);
+			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
+		}
+	}
+
 }
 
 
