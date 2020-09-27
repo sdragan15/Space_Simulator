@@ -4,7 +4,7 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 100;		/// How long is trail
+const HISTORY = 500;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
@@ -31,18 +31,18 @@ var saveY;						/// save position of planets before changing velocity
 sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
 zemlja = new Planet(80,800);
-zemlja.move(1000,0,0,0);
+zemlja.move(1000,0,0,-10);
 merkur = new Planet(50,10);
-merkur.move(500,0,0,0);
+merkur.move(500,0,0,12);
 mesec = new Planet(30,0.1);
-mesec.move(1200,0,0,0);
+mesec.move(1150,0,0,-11.1);
 jupiter = new Planet(100,2000);
-jupiter.move(3000,0,0,0);
+jupiter.move(3000,0,0,5);
 
 
 var allPlanets;
 
-var centerPlanet = sunce;				/// what is center planet
+var centerPlanet;				/// what is center planet
 
 allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
 
@@ -61,7 +61,10 @@ function draw(){
 	
 	background(0, 1, 43);
 	
-	centerPlanet.center();
+	if(centerPlanet){
+		centerPlanet.center();	
+	}
+	
 
 	zooming(width, height);	
 
@@ -210,6 +213,22 @@ function mousePressed(){
 		}
 	}
 	
+}
+
+function doubleClicked(){
+	for(let i=0; i<allPlanets.length; i++){			
+		let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
+		let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
+		if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
+			centerPlanet = allPlanets[i];
+			for(let j=0; j<allPlanets.length; j++){
+				allPlanets[j].array = [];
+			}
+
+			return;
+		}
+	
+	}
 }
 
 function mouseReleased() {
