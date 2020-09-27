@@ -137,12 +137,15 @@ function keyPressed(event) {
 
 	if(pause){
 		if(event.key == 'p' || event.key == 'P'){			/// pausing the game
-			pause = false;
+			pause = false;							/// stop
 		}
 	}
 	else{
 		if(event.key == 'p' || event.key == 'P'){
-			pause = true;
+			pause = true;							/// start
+			for(let i=0; i<allPlanets.length; i++){
+				allPlanets[i].predArray = [];
+			}
 		}
 	}
 	
@@ -233,10 +236,6 @@ function doubleClicked(){
 
 function mouseReleased() {
   locked = false;
-  if(numMove != -1){						/// delete predictions
-  	allPlanets[numMove].predArray = [];
-  }
-  
   
   numMove = NUM_MOVE;
 }

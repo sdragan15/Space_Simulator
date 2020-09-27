@@ -110,28 +110,28 @@ class Planet{
 			}
 
 
-			let predX2 = planet.x;
-			let predY2 = planet.y;
-			let moveX2 = planet.X;
-			let moveY2 = planet.Y;
-			for(let i=0; i<=allPlanets.length-1; i++){
-				if(allPlanets[i] != planet){
-					if(planet.R != 0){
-						// console.log(allPlanets[i].x);
-						// console.log(allPlanets[i].mass);
-						 planet.R = sqrt(Math.pow((allPlanets[i].x - predX2),2) + Math.pow((allPlanets[i].y - predY2),2));
-						 planet.Force = G*(allPlanets[i].mass)/Math.pow(planet.R,2);
-						 // console.log(this.Force);
-						 // console.log(this);
-						 // console.log(this.Force);
-						 moveX2 += (allPlanets[i].x - predX2)*planet.Force/(planet.R);
-						 moveY2 += (allPlanets[i].y - predY2)*planet.Force/(planet.R);
-					}
+			// let predX2 = planet.x;
+			// let predY2 = planet.y;
+			// let moveX2 = planet.X;
+			// let moveY2 = planet.Y;
+			// for(let i=0; i<=allPlanets.length-1; i++){
+			// 	if(allPlanets[i] != planet){
+			// 		if(planet.R != 0){
+			// 			// console.log(allPlanets[i].x);
+			// 			// console.log(allPlanets[i].mass);
+			// 			 planet.R = sqrt(Math.pow((allPlanets[i].x - predX2),2) + Math.pow((allPlanets[i].y - predY2),2));
+			// 			 planet.Force = G*(allPlanets[i].mass)/Math.pow(planet.R,2);
+			// 			 // console.log(this.Force);
+			// 			 // console.log(this);
+			// 			 // console.log(this.Force);
+			// 			 moveX2 += (allPlanets[i].x - predX2)*planet.Force/(planet.R);
+			// 			 moveY2 += (allPlanets[i].y - predY2)*planet.Force/(planet.R);
+			// 		}
 					
-				}
-			}
-			moveX -= moveX2;
-			moveY -= moveY2;
+			// 	}
+			// }
+			// moveX -= moveX2;
+			// moveY -= moveY2;
 			// console.log(this.X);
 			predX += moveX;
 			predY += moveY;
