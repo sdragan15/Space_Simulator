@@ -16,10 +16,11 @@ class Planet{
 		this.R = 1;
 	}
 
-	colour(a,b,c){
+	colour(a,b,c,g){
 		this.a = a;
 		this.b = b;
 		this.c = c;
+		this.glow = g;
 	}
 
 	update(){
@@ -71,19 +72,41 @@ class Planet{
 			let tx = this.array[i].x;
 			let ty = this.array[i].y;
 			noStroke();
-			fill(this.a, this.b, this.c);
+			push();
+			emissiveMaterial(this.a, this.b, this.c);
 			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
+			pop();
 		}
 		
 	}
 
 	show(){
-		push();
-		translate(this.x, this.y, 0);											/// for 3D
-		noStroke();
-		fill(this.a,this.b,this.c);
-		sphere(this.radius);
-		pop();
+		for(let i=0; i<glowingPlanets.length; i++){
+			if(this == glowingPlanets[i]){
+				// console.log(this.radius);
+				push();
+				translate(this.x, this.y, 0);											/// for 3D
+				noStroke();
+				// fill(this.a,this.b,this.c);
+				// lightFalloff(0.5, 0, 0);				/// how strong is light
+				emissiveMaterial(this.a, this.b, this.c);
+				sphere(this.radius/2);
+				pop();
+				break;
+			}
+			else{
+				push();
+				translate(this.x, this.y, 0);											/// for 3D
+				noStroke();
+				fill(this.a,this.b,this.c);
+				lightFalloff(this.glow, 0, 0);				/// how strong is light
+				sphere(this.radius/2);
+				pop();
+			}
+		}
+		
+		
+		
 
 		// stroke(0);								/// for 2D
 		// strokeWeight(this.radius * 0.05);

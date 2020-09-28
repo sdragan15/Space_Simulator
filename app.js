@@ -4,7 +4,7 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 100;		/// How long is trail
+const HISTORY = 0;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
@@ -32,12 +32,12 @@ var saveY;						/// save position of planets before changing velocity
 
 sunce = new Planet(200,90000);		
 sunce.move(0,0,0,0);
-zemlja = new Planet(80,800);
+zemlja = new Planet(80,1500);
 zemlja.move(1000,0,0,-10);
 merkur = new Planet(50,10);
 merkur.move(500,0,0,12);
 mesec = new Planet(30,0.1);
-mesec.move(1150,0,0,-11.1);
+mesec.move(1150,10,0,-12.5);
 jupiter = new Planet(100,2000);
 jupiter.move(3000,0,0,5);
 
@@ -45,8 +45,10 @@ jupiter.move(3000,0,0,5);
 var allPlanets;
 
 var centerPlanet;				/// what is center planet
+var glowingPlanets = [];		/// glowing planets
 
 allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
+glowingPlanets = [sunce];
 
 var cvs;
 var backImage;
@@ -74,46 +76,51 @@ function setup(){
 
 
 function draw(){
-	
+
 	image(backImage,imgW,imgH);
 	// background(0, 1, 43);
 	
-	
+	ambientLight(40,40,40);
 
+	for(let i=0; i<glowingPlanets.length; i++){
+		pointLight(255,255,255,glowingPlanets[i].x*ZOOM,glowingPlanets[i].y*ZOOM, 0);
+
+	}
+	
 	zooming(width, height);	
 
 	updateAll(fastUp);
 
 	
-	sunce.colour(255, 247, 75);
+	sunce.colour(255, 247, 75, 0.5);
 	sunce.trail();							// First put trail and then show
 	sunce.show();
 	sunce.showPrediction();
 	
 
 	
-	mesec.colour( 167, 180, 189 );
+	mesec.colour( 167, 180, 189, 0.5 );
 	mesec.trail();
 	mesec.show();
 	mesec.showPrediction();
 	
 
 	
-	zemlja.colour( 36, 205, 255 );
+	zemlja.colour( 36, 205, 255, 0.5 );
 	zemlja.trail();
 	zemlja.show();
 	zemlja.showPrediction();
 	
 
 	
-	merkur.colour(218, 150, 104);
+	merkur.colour(218, 150, 104, 0.5);
 	merkur.trail();
 	merkur.show();
 	merkur.showPrediction();
 	
 
 	
-	jupiter.colour(214, 198, 94 );
+	jupiter.colour(214, 198, 94, 0.5 );
 	jupiter.trail();
 	jupiter.show();
 	jupiter.showPrediction();
@@ -123,6 +130,7 @@ function draw(){
 		t =	time;
 	}
 	
+
 
 }
 
