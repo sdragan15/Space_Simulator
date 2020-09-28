@@ -177,8 +177,10 @@ class Planet{
 			let tx = this.predArray[i].x;
 			let ty = this.predArray[i].y;
 			noStroke();
-			fill(this.a, this.b, this.c);
+			push();
+			emissiveMaterial(this.a, this.b, this.c);
 			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
+			pop();
 		}
 	}
 
