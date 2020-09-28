@@ -23,6 +23,7 @@ var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
+var fastUp = 5;					/// how fast up you want
 
 
 //Planet(diameter, mass);
@@ -75,44 +76,41 @@ function draw(){
 	image(backImage,imgW,imgH);
 	// background(0, 1, 43);
 	
-	if(centerPlanet){
-		centerPlanet.center();	
-	}
 	
 
 	zooming(width, height);	
 
-	
+	updateAll(fastUp);
 
-	sunce.update();
+	
 	sunce.colour(255, 247, 75);
 	sunce.trail();							// First put trail and then show
 	sunce.show();
 	sunce.showPrediction();
 	
 
-	mesec.update();
+	
 	mesec.colour( 167, 180, 189 );
 	mesec.trail();
 	mesec.show();
 	mesec.showPrediction();
 	
 
-	zemlja.update();
+	
 	zemlja.colour( 36, 205, 255 );
 	zemlja.trail();
 	zemlja.show();
 	zemlja.showPrediction();
 	
 
-	merkur.update();
+	
 	merkur.colour(218, 150, 104);
 	merkur.trail();
 	merkur.show();
 	merkur.showPrediction();
 	
 
-	jupiter.update();
+	
 	jupiter.colour(214, 198, 94 );
 	jupiter.trail();
 	jupiter.show();
@@ -125,6 +123,10 @@ function draw(){
 	
 
 }
+
+
+
+
 
 function keyPressed(event) {	
 	if(event.key == 'Control'){					/// Changing velocity of planets with mouse
@@ -191,6 +193,11 @@ function mouseDragged(event){
 				for(let j=0; j<allPlanets[i].array.length; j++){
 					allPlanets[i].array[j].x += screen_x/ZOOM;
 					allPlanets[i].array[j].y += screen_y/ZOOM;
+				}
+
+				for(let j=0; j<allPlanets[i].predArray.length; j++){
+					allPlanets[i].predArray[j].x += screen_x/ZOOM;
+					allPlanets[i].predArray[j].y += screen_y/ZOOM;
 				}
 				
 				imgW += screen_x/(ZOOM*5000);
