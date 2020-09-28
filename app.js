@@ -48,11 +48,15 @@ allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
 
 var cvs;
 var backImage;
+var earth;
+
 var imgW;
 var imgH;		/// background width and height
 
 function preload(){
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
+	earth = loadImage('http://127.0.0.1:8887/earth.png');
+
 	imgW = (backImage.width - container_width)/2;
 	imgH = (backImage.height - container_height)/2;
 }
