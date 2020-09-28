@@ -4,13 +4,14 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 500;		/// How long is trail
+const HISTORY = 100;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
 const PREDICTION = 1000;			/// prediction of moving
-
+const fastUp = 2;					/// how fast up you want
+const fr = 30;					/// framerate
 
 var ZOOM = 0.1;			
 var locked = false;
@@ -23,7 +24,7 @@ var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
-var fastUp = 5;					/// how fast up you want
+
 
 
 //Planet(diameter, mass);
@@ -64,9 +65,10 @@ function preload(){
 // console.log(backImage);
 
 function setup(){
-	cvs = createCanvas(container_width,container_height);
+	cvs = createCanvas(container_width,container_height, WEBGL);
 	cvs.parent('container');
 	background(0, 1, 43);
+	frameRate(fr);
 	
 }
 

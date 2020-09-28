@@ -78,10 +78,17 @@ class Planet{
 	}
 
 	show(){
-		stroke(0);
-		strokeWeight(this.radius * 0.05);
+		push();
+		translate(this.x, this.y, 0);											/// for 3D
+		noStroke();
 		fill(this.a,this.b,this.c);
-		ellipse(this.x, this.y, this.radius, this.radius);
+		sphere(this.radius);
+		pop();
+
+		// stroke(0);								/// for 2D
+		// strokeWeight(this.radius * 0.05);
+		// fill(this.a,this.b,this.c);
+		// ellipse(this.x, this.y, this.radius, this.radius);
 	}
 
 	calculPrediction(planet){
