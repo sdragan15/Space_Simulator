@@ -4,7 +4,7 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 0;		/// How long is trail
+const HISTORY = 100;		/// How long is trail
 const N_TIME = 1;		/// What is normal time
 const TIME_FASTEN = 1;		/// How fast time is changing
 const NUM_MOVE = -1;		/// Zero planet for moving
@@ -24,6 +24,7 @@ var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
+var optim = 1;				/// for optimize trail
 
 
 
@@ -37,8 +38,8 @@ zemlja.move(1000,0,0,-10);
 merkur = new Planet(50,10);
 merkur.move(500,0,0,12);
 mesec = new Planet(30,0.1);
-mesec.move(1150,10,0,-12.5);
-jupiter = new Planet(100,2000);
+mesec.move(3400,0,-0.5,7.8);
+jupiter = new Planet(100,4000);
 jupiter.move(3000,0,0,5);
 
 
@@ -61,15 +62,15 @@ function preload(){
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
 	earth = loadImage('http://127.0.0.1:8887/earth.png');
 
-	imgW = (backImage.width - container_width)/2;
-	imgH = (backImage.height - container_height)/2;
+	imgW = (backImage.width - container_width);
+	imgH = (backImage.height - container_height);
 }
 // console.log(backImage);
 
 function setup(){
 	cvs = createCanvas(container_width,container_height, WEBGL);
 	cvs.parent('container');
-	background(0, 1, 43);
+	background(0, 0, 0);
 	frameRate(fr);
 	
 }
@@ -77,7 +78,10 @@ function setup(){
 
 function draw(){
 
+	// console.log(frameRate()); 
+
 	image(backImage,imgW,imgH);
+	
 	// background(0, 1, 43);
 	
 	ambientLight(40,40,40);
@@ -93,21 +97,21 @@ function draw(){
 
 	
 	sunce.colour(255, 247, 75, 0.5);
-	sunce.trail();							// First put trail and then show
+	// sunce.trail();							// First put trail and then show
 	sunce.show();
 	sunce.showPrediction();
 	
 
 	
 	mesec.colour( 167, 180, 189, 0.5 );
-	mesec.trail();
+	// mesec.trail();
 	mesec.show();
 	mesec.showPrediction();
 	
 
 	
 	zemlja.colour( 36, 205, 255, 0.5 );
-	zemlja.trail();
+	// zemlja.trail();
 	zemlja.show();
 	zemlja.showPrediction();
 	
@@ -121,7 +125,7 @@ function draw(){
 
 	
 	jupiter.colour(214, 198, 94, 0.5 );
-	jupiter.trail();
+	// jupiter.trail();
 	jupiter.show();
 	jupiter.showPrediction();
 
@@ -130,7 +134,6 @@ function draw(){
 		t =	time;
 	}
 	
-
 
 }
 

@@ -3,7 +3,7 @@ body{
 }
 
 #container{
-	background: white;
+	background: black;
 	display: flex;
 	box-sizing: border-box;
 	height: 100vh;
@@ -14,7 +14,7 @@ body{
 }
 
 .loading{
-	width: 100%;
+	width: auto;
 	height: 100%;
 }
 

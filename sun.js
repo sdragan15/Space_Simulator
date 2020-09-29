@@ -31,7 +31,8 @@ class Planet{
 					if(this.R != 0){
 						// console.log(allPlanets[i].x);
 						// console.log(allPlanets[i].mass);
-						 this.R = sqrt(Math.pow((allPlanets[i].x - this.x),2) + Math.pow((allPlanets[i].y - this.y),2));
+						this.R = dist(allPlanets[i].x,allPlanets[i].y,this.x,this.y);
+						 // this.R = sqrt(Math.pow((allPlanets[i].x - this.x),2) + Math.pow((allPlanets[i].y - this.y),2));
 						 this.Force = G*(allPlanets[i].mass)/Math.pow(this.R,2);
 						 // console.log(this.Force);
 						 // console.log(this);
@@ -45,13 +46,14 @@ class Planet{
 			// console.log(this.X);
 			this.x += this.X;
 			this.y += this.Y;
-			if(this.array.length < HISTORY){
+			if(this.array.length < HISTORY && optim%2 == 0){
 				this.array.push({x: this.x, y: this.y});
 				// console.log(this.array[0].x);
 			}
-			else{
+			else if(optim%2 == 0){
 				this.array.splice(0, 1);
 			}
+			optim++;
 			// console.log(this.array[1]);
 		}
 		
@@ -127,7 +129,8 @@ class Planet{
 					if(this.R != 0){
 						// console.log(allPlanets[i].x);
 						// console.log(allPlanets[i].mass);
-						 this.R = sqrt(Math.pow((allPlanets[i].x - predX),2) + Math.pow((allPlanets[i].y - predY),2));
+						this.R = dist(allPlanets[i].x,allPlanets[i].y,predX,predY);
+						 // this.R = sqrt(Math.pow((allPlanets[i].x - predX),2) + Math.pow((allPlanets[i].y - predY),2));
 						 this.Force = G*(allPlanets[i].mass)/Math.pow(this.R,2);
 						 // console.log(this.Force);
 						 // console.log(this);
