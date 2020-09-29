@@ -5,21 +5,18 @@ const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
 const HISTORY = 100;		/// How long is trail
-const N_TIME = 1;		/// What is normal time
-const TIME_FASTEN = 1;		/// How fast time is changing
+const N_TIME = 2;		/// What is normal time
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
 const PREDICTION = 1000;			/// prediction of moving
-const fastUp = 2;					/// how fast up you want
 const fr = 30;					/// framerate
 
+var fastUp = 2;					/// how fast up you want, 2 is normal
 var ZOOM = 0.1;			
 var locked = false;
 var screen_x = 0;
 var screen_y = 0;
 var pause = false;			/// Pause the game
-var time = N_TIME;				/// slow down time
-var t = time;				/// for time
 var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
@@ -129,12 +126,6 @@ function draw(){
 	jupiter.show();
 	jupiter.showPrediction();
 
-	t--;
-	if(t < N_TIME){
-		t =	time;
-	}
-	
-
 }
 
 
@@ -149,18 +140,17 @@ function keyPressed(event) {
 
 
 	if(event.key == 's' || event.key == 'S'){			///slow down time
-		time += TIME_FASTEN;
-		// console.log(time);
+		if(fastUp >=1){
+			fastUp--;
+		}// console.log(time);
 	}
 	else if(event.key == 'f' || event.key == 'F'){
-		if(time > N_TIME){
-			time -= TIME_FASTEN;
-		}
+		fastUp++;
 	}
 
 
 	if(event.key == 'n' || event.key == 'N'){			/// reset time
-		time = N_TIME;
+		fastUp = N_TIME;
 	}
 
 

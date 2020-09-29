@@ -24,7 +24,7 @@ class Planet{
 	}
 
 	update(){
-		if(pause && t == 1){
+		if(pause){
 			// console.log(123);
 			for(let i=0; i<=allPlanets.length-1; i++){
 				if(allPlanets[i] != this){
