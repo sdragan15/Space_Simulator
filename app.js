@@ -56,6 +56,7 @@ var imgW;
 var imgH;		/// background width and height
 
 function preload(){
+	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
 	earth = loadImage('http://127.0.0.1:8887/earth.png');
 
@@ -71,6 +72,7 @@ function setup(){
 	frameRate(fr);
 	
 }
+
 
 
 function draw(){
@@ -126,6 +128,8 @@ function draw(){
 	jupiter.show();
 	jupiter.showPrediction();
 
+	mousePossition();
+
 }
 
 
@@ -175,7 +179,6 @@ function keyReleased(){
 		changeVelocity = false;		
 	}
 }
-
 
 
 function mouseDragged(event){
