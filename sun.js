@@ -45,14 +45,13 @@ class Planet{
 			// console.log(this.X);
 			this.x += this.X;
 			this.y += this.Y;
-			if(this.array.length < HISTORY && optim%2 == 0){
+			if(this.array.length < HISTORY){
 				this.array.push({x: this.x, y: this.y});
 				// console.log(this.array[0].x);
 			}
-			else if(optim%2 == 0){
+			else{
 				this.array.splice(0, 1);
 			}
-			optim++;
 			// console.log(this.array[1]);
 		}
 		
@@ -115,7 +114,7 @@ class Planet{
 		// ellipse(this.x, this.y, this.radius, this.radius);
 	}
 
-	calculPrediction(planet){
+	calculPrediction(){
 		this.predArray = [];
 		let predX = this.x;
 		let predY = this.y;

@@ -70,18 +70,13 @@ function create(){
 }
 
 function makePlanet(){
-	console.log(planetName.value);
-	console.log(planetMass.value);
-	console.log(planetName.value);
-	console.log(planetDiameter.value);
-	console.log(planetColor.value);
 
 	allPlanets.push(new Planet(planetName.value,planetDiameter.value,planetMass.value));
 
 	let last = allPlanets.length - 1;
 	// console.log(planetName.value);
 	allPlanets[last].colour(planetColor.value,0.5);
-	allPlanets[last].move(100,100,0,0);
+	allPlanets[last].move(0,0,0,0);
 	
 	console.log(allPlanets);
 }

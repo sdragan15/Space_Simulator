@@ -21,7 +21,6 @@ var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
-var optim = 1;				/// for optimize trail
 
 
 
