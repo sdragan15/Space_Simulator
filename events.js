@@ -38,6 +38,8 @@ var planetDiameter = document.getElementById('diameter');
 var planetColor = document.getElementById('color_input');
 var Done = document.getElementById('done');
 
+var last = -1;			/// planets that are created
+
 // while(true){
 // 	console.log(planetColor);
 // }
@@ -54,6 +56,7 @@ function showMeni(){
 }
 
 function hideMeni(){
+	last = -1;
 	if(meniDiv.style.display == 'flex'){
 		meniDiv.style.display = 'none';
 	}
@@ -73,10 +76,15 @@ function makePlanet(){
 
 	allPlanets.push(new Planet(planetName.value,planetDiameter.value,planetMass.value));
 
-	let last = allPlanets.length - 1;
+	last = allPlanets.length - 1;
 	// console.log(planetName.value);
 	allPlanets[last].colour(planetColor.value,0.5);
 	allPlanets[last].move(0,0,0,0);
 	
-	console.log(allPlanets);
+	planetName.value = '';
+	planetDiameter.value = '';
+	planetMass.value = '';
+	planetColor.value = '#000000';
+	planetName.value = '';
+	createPlanet.style.display = 'none';
 }

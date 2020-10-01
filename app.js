@@ -97,6 +97,11 @@ function draw(){
 
 	updateAll(fastUp);
 
+	if(last != -1){
+		allPlanets[last].x = ((mouseX - width/2)/ZOOM);
+		allPlanets[last].y = ((mouseY - height/2)/ZOOM);
+	}
+
 	sunce.colour('#ffea00', 0.5);
 	mesec.colour('#bcbfb6', 0.5 );
 	zemlja.colour('#0080ff', 0.5 );
