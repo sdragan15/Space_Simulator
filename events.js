@@ -37,6 +37,7 @@ var planetMass = document.getElementById('mass');
 var planetDiameter = document.getElementById('diameter'); 
 var planetColor = document.getElementById('color_input');
 var Done = document.getElementById('done');
+var shinePlanet = document.getElementById('shine');
 
 var last = -1;			/// planets that are created
 
@@ -73,18 +74,41 @@ function create(){
 }
 
 function makePlanet(){
+	if(verify()){
+		allPlanets.push(new Planet(planetName.value,planetDiameter.value,planetMass.value));
 
-	allPlanets.push(new Planet(planetName.value,planetDiameter.value,planetMass.value));
+		last = allPlanets.length - 1;
+		// console.log(planetName.value);
+		allPlanets[last].colour(planetColor.value,0.5);
+		allPlanets[last].move(0,0,0,0);
+		
+		if(shinePlanet.checked){
+			glowingPlanets.push(allPlanets[last]);
+		}
 
-	last = allPlanets.length - 1;
-	// console.log(planetName.value);
-	allPlanets[last].colour(planetColor.value,0.5);
-	allPlanets[last].move(0,0,0,0);
+		planetName.value = '';
+		planetDiameter.value = '';
+		planetMass.value = '';
+		planetColor.value = '#000000';
+		planetName.value = '';
+		createPlanet.style.display = 'none';
+		btnMeni.style.display = 'block';
+	}
+}
+
+function verify(){
+	if(planetName.value == ''){
+		alert('You must input planet name!');
+		return false;
+	}
+	else if(Number(planetMass.value) != planetMass.value || Number(planetMass.value) == 0){
+		alert('Planet mass must be a number!');
+		return false;
+	}
+	else if(Number(planetDiameter.value) != planetDiameter.value || Number(planetDiameter.value) == 0){
+		alert('Planet diameter must be a number!');
+		return false;
+	}
 	
-	planetName.value = '';
-	planetDiameter.value = '';
-	planetMass.value = '';
-	planetColor.value = '#000000';
-	planetName.value = '';
-	createPlanet.style.display = 'none';
+	return true;
 }
