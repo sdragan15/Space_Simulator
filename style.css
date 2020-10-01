@@ -18,19 +18,43 @@ body{
 	height: 100%;
 }
 
+#start_sim{
+	position: fixed;
+	top: 45%;
+	left: 50%;
+	/*transform: translate(0, 50%);*/
+	transform: translate(-50%, 0);
+	color: white;
+	font-size: 70px;
+	border: solid white 4px;
+	padding: 10px;
+}
+
 #meni{
 	display: none;
 	flex-wrap: wrap;
+	flex-direction: column;
 	background: rgb(255,255,255,0.2);
 	position: fixed;
 	height: 100%;
 }
 
-#btn_create{
+#finished{
+	display: none;
+	flex-wrap: wrap;
+	flex-direction: column;
+	background: rgb(255,255,255,0.2);
+	position: fixed;
+	height: 100%;
+}
+
+.meni_btns{
 	margin-top: 20px;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-bottom: 10px;
 	height: 40px;
+	font-size: 90%;
 }
 
 #create_planet{

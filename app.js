@@ -4,12 +4,13 @@ var container_height = document.getElementById("container").offsetHeight;
 const G = 1;
 const M = 1;    			///Multiplicator
 const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 100;		/// How long is trail
+const HISTORY = 500;		/// How long is trail
 const N_TIME = 2;		/// What is normal time
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
 const PREDICTION = 1000;			/// prediction of moving
 const fr = 30;					/// framerate
+const OPTIMIZATION = 5;			/// optimization tails
 
 var fastUp = 2;					/// how fast up you want, 2 is normal
 var ZOOM = 0.1;			
@@ -21,31 +22,20 @@ var numMove = NUM_MOVE;			/// Number of planets you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
+var optim = 0;				/// for optimization tail
 
 
 
 //Planet(diameter, mass);
 //Planet.move(x, y, x.Velocity, y.Velocity);
 
-sunce = new Planet('Sunce',200,90000);		
-sunce.move(0,0,0,0);
-zemlja = new Planet('Zemlja',80,1500);
-zemlja.move(1000,0,0,-10);
-merkur = new Planet('Merkur',50,10);
-merkur.move(500,0,0,12);
-mesec = new Planet('Berke',30,0.1);
-mesec.move(3400,0,-0.5,7.8);
-jupiter = new Planet('Jupiter',100,4000);
-jupiter.move(3000,0,0,5);
 
-
-var allPlanets;
+var allPlanets = [];
 
 var centerPlanet;				/// what is center planet
 var glowingPlanets = [];		/// glowing planets
 
-allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
-glowingPlanets = [sunce];
+
 
 var cvs;
 var backImage;
@@ -102,16 +92,13 @@ function draw(){
 		allPlanets[last].y = ((mouseY - height/2)/ZOOM);
 	}
 
-	sunce.colour('#ffea00', 0.5);
-	mesec.colour('#bcbfb6', 0.5 );
-	zemlja.colour('#0080ff', 0.5 );
-	merkur.colour('#ff8000', 0.5);
-	jupiter.colour('#e100ff', 0.5 );
-
 	for(let i=0; i<allPlanets.length; i++){
-		allPlanets[i].trail();
+		if(allPlanets[i] != centerPlanet){
+			allPlanets[i].trail();
+		}
 		allPlanets[i].show();
 		allPlanets[i].showPrediction();
+		// console.log(optim);
 	}
 	
 	

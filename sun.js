@@ -45,11 +45,13 @@ class Planet{
 			// console.log(this.X);
 			this.x += this.X;
 			this.y += this.Y;
-			if(this.array.length < HISTORY){
+			// console.log(optim);
+			if(this.array.length < HISTORY && optim%OPTIMIZATION === 0){
 				this.array.push({x: this.x, y: this.y});
 				// console.log(this.array[0].x);
+				
 			}
-			else{
+			else if(optim%OPTIMIZATION == 0){
 				this.array.splice(0, 1);
 			}
 			// console.log(this.array[1]);

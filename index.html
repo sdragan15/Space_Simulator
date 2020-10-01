@@ -6,11 +6,21 @@
 	<title>Gravity</title>
 </head>
 <body>
+	<div id="start_sim">
+		Go to Meni
+	</div>
+
 	<button id="btn_meni">Meni</button>
 
 	<div id="meni">
-		<button id="btn_create">Create Planet</button>
+		<button id="btn_create" class="meni_btns">Create Planet</button> 
+		<button id="btn_finished" class="meni_btns">Finished systems</button>
 	</div>
+	
+	<div id="finished">
+		<button id="solar_sys" class="meni_btns">Solar system</button>
+	</div>
+
 	<div id="create_planet">
 			<input id="name" class="create_btns" type="text" placeholder="name"> <br>
 			<input id="mass" class="create_btns" type="text" placeholder="mass"> <br>
@@ -19,7 +29,8 @@
 			<text id="shine_text">Shine?</text>
 			<input id="shine"  type="checkbox"> <br>
 			<button id="done">Done</button>
-		</div>
+	</div>
+
 	<div id="container">
 		<img src="http://127.0.0.1:8887/fuckyou.jpg" id="p5_loading" class="loading">
 		<!-- <img src="images/loading.jpg" id="p5_loading" class="loading">	 -->

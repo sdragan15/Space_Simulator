@@ -2,6 +2,7 @@
 
 function updateAll(fastUp){
 	for(let k=0; k<=fastUp; k++){
+		optim++;
 		for(let i=0; i<allPlanets.length; i++){
 			allPlanets[i].update();
 		}
@@ -38,6 +39,11 @@ var planetDiameter = document.getElementById('diameter');
 var planetColor = document.getElementById('color_input');
 var Done = document.getElementById('done');
 var shinePlanet = document.getElementById('shine');
+var finishedDiv = document.getElementById('finished');
+var finishedBtn = document.getElementById('btn_finished');
+var startSim = document.getElementById('start_sim');
+
+
 
 var last = -1;			/// planets that are created
 
@@ -49,11 +55,19 @@ btnMeni.addEventListener('click', showMeni);
 gameDiv.addEventListener('click', hideMeni);
 createBtn.addEventListener('click', create);
 Done.addEventListener('click', makePlanet);
+finishedBtn.addEventListener('click', showFinished);
 
 
 function showMeni(){
 	meniDiv.style.display = 'flex';
 	btnMeni.style.display = 'none';
+	startSim.style.display = 'none';
+}
+
+function showFinished(){
+	console.log(1245);
+	meniDiv.style.display = 'none';
+	finishedDiv.style.display = 'flex';
 }
 
 function hideMeni(){
@@ -111,4 +125,37 @@ function verify(){
 	}
 	
 	return true;
+}
+
+
+
+//// There goes all finished systems:
+var solarSys = document.getElementById('solar_sys');
+solarSys.addEventListener('click', addSolarSys);
+///
+
+
+function addSolarSys(){
+	sunce = new Planet('Sun',200,90000);		
+	sunce.move(0,0,0,0);
+	zemlja = new Planet('Earth',80,1500);
+	zemlja.move(2000,0,0,-7);
+	merkur = new Planet('Mercury',50,10);
+	merkur.move(900,0,0,10);
+	mesec = new Planet('Moon',30,0.1);
+	mesec.move(2090,-40,-1,-10);
+	jupiter = new Planet('Jupiter',100,4000);
+	jupiter.move(5000,0,0,4);
+
+	sunce.colour('#ffea00', 0.5);
+	mesec.colour('#bcbfb6', 0.5 );
+	zemlja.colour('#0080ff', 0.5 );
+	merkur.colour('#ff8000', 0.5);
+	jupiter.colour('#ba8900', 0.5 );
+
+	allPlanets = [sunce,zemlja,merkur,mesec,jupiter];
+	glowingPlanets = [sunce];
+
+	finishedDiv.style.display = 'none';
+	btnMeni.style.display = 'block';
 }
