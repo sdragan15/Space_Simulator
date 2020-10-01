@@ -1,6 +1,7 @@
 class Planet{
 
-	constructor(r, m){
+	constructor(n, r, m){
+		this.name = n;
 		this.radius = r;
 		this.mass = m*M;
 		// console.log(ZOOM);
@@ -16,10 +17,8 @@ class Planet{
 		this.R = 1;
 	}
 
-	colour(a,b,c,g){
+	colour(a,g){
 		this.a = a;
-		this.b = b;
-		this.c = c;
 		this.glow = g;
 	}
 
@@ -75,7 +74,7 @@ class Planet{
 			let ty = this.array[i].y;
 			noStroke();
 			push();
-			emissiveMaterial(this.a, this.b, this.c);
+			emissiveMaterial(this.a);
 			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
 			pop();
 		}
@@ -91,7 +90,7 @@ class Planet{
 				noStroke();
 				// fill(this.a,this.b,this.c);
 				// lightFalloff(0.5, 0, 0);				/// how strong is light
-				emissiveMaterial(this.a, this.b, this.c);
+				emissiveMaterial(this.a);
 				sphere(this.radius/2);
 				pop();
 				break;
@@ -100,7 +99,7 @@ class Planet{
 				push();
 				translate(this.x, this.y, 0);											/// for 3D
 				noStroke();
-				fill(this.a,this.b,this.c);
+				fill(this.a);
 				lightFalloff(this.glow, 0, 0);				/// how strong is light
 				sphere(this.radius/2);
 				pop();
@@ -181,7 +180,7 @@ class Planet{
 			let ty = this.predArray[i].y;
 			noStroke();
 			push();
-			emissiveMaterial(this.a, this.b, this.c);
+			emissiveMaterial(this.a);
 			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
 			pop();
 		}

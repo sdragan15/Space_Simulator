@@ -28,15 +28,15 @@ var optim = 1;				/// for optimize trail
 //Planet(diameter, mass);
 //Planet.move(x, y, x.Velocity, y.Velocity);
 
-sunce = new Planet(200,90000);		
+sunce = new Planet('Sunce',200,90000);		
 sunce.move(0,0,0,0);
-zemlja = new Planet(80,1500);
+zemlja = new Planet('Zemlja',80,1500);
 zemlja.move(1000,0,0,-10);
-merkur = new Planet(50,10);
+merkur = new Planet('Merkur',50,10);
 merkur.move(500,0,0,12);
-mesec = new Planet(30,0.1);
+mesec = new Planet('Berke',30,0.1);
 mesec.move(3400,0,-0.5,7.8);
-jupiter = new Planet(100,4000);
+jupiter = new Planet('Jupiter',100,4000);
 jupiter.move(3000,0,0,5);
 
 
@@ -59,6 +59,10 @@ function preload(){
 	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
 	earth = loadImage('http://127.0.0.1:8887/earth.png');
+
+	// font = loadFont('fonts/OpenSans-Regular.ttf');
+	// backImage = loadImage('images/skyBack.png');			/// for net probe
+	// earth = loadImage('images/earth.png');
 
 	imgW = (backImage.width - container_width);
 	imgH = (backImage.height - container_height);
@@ -94,40 +98,19 @@ function draw(){
 
 	updateAll(fastUp);
 
-	
-	sunce.colour(255, 247, 75, 0.5);
-	// sunce.trail();							// First put trail and then show
-	sunce.show();
-	sunce.showPrediction();
-	
+	sunce.colour('#ffea00', 0.5);
+	mesec.colour('#bcbfb6', 0.5 );
+	zemlja.colour('#0080ff', 0.5 );
+	merkur.colour('#ff8000', 0.5);
+	jupiter.colour('#e100ff', 0.5 );
 
+	for(let i=0; i<allPlanets.length; i++){
+		allPlanets[i].trail();
+		allPlanets[i].show();
+		allPlanets[i].showPrediction();
+	}
 	
-	mesec.colour( 167, 180, 189, 0.5 );
-	// mesec.trail();
-	mesec.show();
-	mesec.showPrediction();
 	
-
-	
-	zemlja.colour( 36, 205, 255, 0.5 );
-	// zemlja.trail();
-	zemlja.show();
-	zemlja.showPrediction();
-	
-
-	
-	merkur.colour(218, 150, 104, 0.5);
-	merkur.trail();
-	merkur.show();
-	merkur.showPrediction();
-	
-
-	
-	jupiter.colour(214, 198, 94, 0.5 );
-	// jupiter.trail();
-	jupiter.show();
-	jupiter.showPrediction();
-
 	mousePossition();
 
 }
