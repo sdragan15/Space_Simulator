@@ -3,8 +3,8 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplicator
-const THICKNES = 0.2;		/// Thicknes of trail
-const HISTORY = 500;		/// How long is trail
+const THICKNES = 0.4;		/// Thicknes of trail
+const HISTORY = 100;		/// How long is trail
 const N_TIME = 2;		/// What is normal time
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
