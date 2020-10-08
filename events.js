@@ -1,6 +1,10 @@
 /// There is all function for buttons and gui
 
 function updateAll(fastUp){
+	if(detailShow && shd % SHD == 0){
+		showDetails(detailShow);
+		shd = 0;
+	}
 	for(let k=0; k<=fastUp; k++){
 		optim++;
 		for(let i=0; i<allPlanets.length; i++){
@@ -10,6 +14,7 @@ function updateAll(fastUp){
 			centerPlanet.center();	
 		}
 	}
+	shd++;
 }
 
 function mousePossition(){
@@ -134,13 +139,43 @@ function verify(){
 }
 
 
+
+var detailsDiv = document.getElementById('details');
+
+
 function showDetails(planet){
-	console.log(planet.radius);
+	removeChilds(detailsDiv);
+	createElementAndAppend('Name: ', planet.name);
+	createElementAndAppend('Color: ', planet.a);
+	createElementAndAppend('Radius: ', planet.radius);
+	createElementAndAppend('Mass: ', planet.mass);
+	createElementAndAppend('Velocity X: ', planet.X.toFixed(4));
+	createElementAndAppend('Velocity Y: ', planet.Y.toFixed(4));
+
+	var inTotal = Math.pow((Math.pow(planet.X,2) + Math.pow(planet.Y,2)),1.0/2.0); 
+	inTotal = inTotal.toFixed(4);
+
+	createElementAndAppend('Velocity in total: ', inTotal);
+
+	updateDetails = true;
 }
 
 
+function createElementAndAppend(text,add){
+	var detailClass = document.createElement('div');
+	detailClass.className = 'det_class';
+	detailClass.innerHTML = text + add;
+	detailsDiv.appendChild(detailClass);
+}
+
 function hideDetails(){
-	console.log('HIDE');
+	removeChilds(detailsDiv);
+}
+
+function removeChilds(parent){
+	while(parent.firstChild){
+		parent.removeChild(parent.firstChild);
+	}
 }
 
 

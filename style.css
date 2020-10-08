@@ -48,6 +48,30 @@ body{
 	height: 100%;
 }
 
+#details{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	/*background: rgb(255,255,255,0.2);*/
+	position: fixed;
+	right: 10px;
+	color: white;
+	border-radius: 10px;
+	height: 100%;
+	justify-content: center;
+}
+
+.det_class{
+	background: rgb(70,70,70,0.6);
+	padding: 10px;
+	text-align: center;
+	border: solid 1px black;
+	border-radius: 10px;
+	max-width: 20vw;
+	font-size: 110%;
+
+}
+
 .meni_btns{
 	margin-top: 20px;
 	margin-left: 10px;

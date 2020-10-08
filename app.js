@@ -11,6 +11,7 @@ const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
 const PREDICTION = 1000;			/// prediction of moving
 const fr = 30;					/// framerate
 const OPTIMIZATION = 5;			/// optimization tails
+const SHD = 20;					/// FPS for details show (shd = show details)
 
 var fastUp = 2;					/// how fast up you want, 2 is normal
 var ZOOM = 0.1;			
@@ -24,6 +25,9 @@ var saveX;
 var saveY;						/// save position of planets before changing velocity
 var optim = 0;				/// for optimization tail
 var dragged = false;		/// if mouse is dragged
+var updateDetails = false;	
+var detailShow = false;				/// to show details in update
+var shd = 0;				/// calculate fps for details Show
 
 
 
@@ -166,6 +170,7 @@ function mouseDragged(event){
 			allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
 			allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
 			allPlanets[numMove].calculPrediction(centerPlanet);
+			showDetails(allPlanets[numMove]);
 		}
 	}
 	else{
@@ -226,6 +231,7 @@ function mousePressed(){
 		let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
 		if(mouseOnPlanet(absolutePositionX,absolutePositionY,allPlanets[i].radius)){
 			showDetails(allPlanets[i]);
+			detailShow = allPlanets[i];
 			break;
 		}
 	}
@@ -271,6 +277,7 @@ function mouseReleased() {
 	}
 	if(br == allPlanets.length && !dragged){
 		hideDetails();
+		detailShow = false;
 	}
 	br = 0;
 	dragged = false;
