@@ -23,6 +23,7 @@ var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
 var optim = 0;				/// for optimization tail
+var dragged = false;		/// if mouse is dragged
 
 
 
@@ -156,6 +157,8 @@ function keyReleased(){
 
 
 function mouseDragged(event){
+	dragged = true;
+
 	screen_x = event.movementX;
 	screen_y = event.movementY;
 	if(changeVelocity){
@@ -199,12 +202,11 @@ function mousePressed(){
 	if(event.button == 0){
 		locked = true;						/// For moving screen
 
-
 		if(!pause){							/// For moving planets around
 			for(let i=0; i<allPlanets.length; i++){
 				let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
 				let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
-				if(abs(absolutePositionX) < allPlanets[i].radius/2*ZOOM && abs(absolutePositionY) < allPlanets[i].radius/2*ZOOM){
+				if(mouseOnPlanet(absolutePositionX,absolutePositionY,allPlanets[i].radius)){
 					numMove = i;
 					saveX = allPlanets[i].x;
 					saveY = allPlanets[i].y;
@@ -218,7 +220,23 @@ function mousePressed(){
 
 		}
 	}
+
+	for(let i=0; i<allPlanets.length; i++){
+		let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
+		let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
+		if(mouseOnPlanet(absolutePositionX,absolutePositionY,allPlanets[i].radius)){
+			showDetails(allPlanets[i]);
+			break;
+		}
+	}
 	
+}
+
+function mouseOnPlanet(absX, absY, planetR){
+	if(abs(absX) < planetR/2*ZOOM && abs(absY) < planetR/2*ZOOM){
+		return true;
+	}
+	else return false;
 }
 
 function doubleClicked(){
@@ -241,6 +259,21 @@ function mouseReleased() {
   locked = false;
   
   numMove = NUM_MOVE;
+
+	let br = 0;
+  for(let i=0; i<allPlanets.length; i++){			/// show details and hide it when clicked on background
+  		
+		let absolutePositionX = allPlanets[i].x*ZOOM - (event.x - width/2);
+		let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
+		if(!mouseOnPlanet(absolutePositionX,absolutePositionY,allPlanets[i].radius)){
+			br++;	
+		}	
+	}
+	if(br == allPlanets.length && !dragged){
+		hideDetails();
+	}
+	br = 0;
+	dragged = false;
 }
 
 

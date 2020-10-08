@@ -134,6 +134,15 @@ function verify(){
 }
 
 
+function showDetails(planet){
+	console.log(planet.radius);
+}
+
+
+function hideDetails(){
+	console.log('HIDE');
+}
+
 
 //// There goes all finished systems:
 var solarSys = document.getElementById('solar_sys');
