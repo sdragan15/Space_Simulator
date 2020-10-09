@@ -68,6 +68,7 @@ function showMeni(){
 		meniDiv.style.display = 'flex';
 		btnMeni.style.display = 'none';
 		startSim.style.display = 'none';
+		pauseGame = false;					/// disable pausing game
 	}
 	else{
 		alert('Game must be paused for this action!');
@@ -86,7 +87,10 @@ function hideMeni(){
 		meniDiv.style.display = 'none';
 	}
 	if(btnMeni.style.display == 'none')
+	{
 		btnMeni.style.display = 'block';
+		pauseGame = true;
+	}
 
 	if(createPlanet.style.display == 'block')
 		createPlanet.style.display = 'none';
@@ -118,6 +122,7 @@ function makePlanet(){
 		planetName.value = '';
 		createPlanet.style.display = 'none';
 		btnMeni.style.display = 'block';
+		pauseGame = true;
 	}
 }
 
@@ -232,4 +237,5 @@ function addSolarSys(){
 
 	finishedDiv.style.display = 'none';
 	btnMeni.style.display = 'block';
+	pauseGame = true;
 }

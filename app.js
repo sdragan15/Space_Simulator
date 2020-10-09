@@ -28,6 +28,7 @@ var dragged = false;		/// if mouse is dragged
 var updateDetails = false;	
 var detailShow = false;				/// to show details in update
 var shd = 0;				/// calculate fps for details Show
+var pauseGame = true;		/// enable pause game
 
 
 
@@ -138,12 +139,12 @@ function keyPressed(event) {
 
 
 	if(pause){
-		if(event.key == 'p' || event.key == 'P'){			/// pausing the game
+		if((event.key == 'p' || event.key == 'P') && pauseGame){			/// pausing the game
 			pause = false;							/// stop
 		}
 	}
 	else{
-		if(event.key == 'p' || event.key == 'P'){
+		if((event.key == 'p' || event.key == 'P') && pauseGame){
 			pause = true;							/// start
 			for(let i=0; i<allPlanets.length; i++){
 				allPlanets[i].predArray = [];
