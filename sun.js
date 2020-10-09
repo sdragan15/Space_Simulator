@@ -88,11 +88,27 @@ class Planet{
 				// console.log(this.radius);
 				push();
 				translate(this.x, this.y, 0);											/// for 3D
-				noStroke();
+
+				noStroke();				
 				// fill(this.a,this.b,this.c);
 				// lightFalloff(0.5, 0, 0);				/// how strong is light
 				emissiveMaterial(this.a);
 				sphere(this.radius/2);
+				let k = this.radius/4;
+				// console.log(k);
+				for(let j=0; j<=20; j++){
+					noStroke();
+					let colorSphere = color(this.a);			/// shine effect
+					colorSphere.setAlpha(j*10);
+					emissiveMaterial(colorSphere);
+					// colorSphere.setAlpha(10);
+					let v = parseInt(this.radius)  + k*10;
+					ellipse(0,0,v,v);
+					// console.log(v);
+					// sphere(this.radius);
+					k = k/1.4;
+					// console.log(k);
+				}
 				pop();
 				break;
 			}
@@ -142,30 +158,6 @@ class Planet{
 				}
 			}
 
-
-			// let predX2 = planet.x;
-			// let predY2 = planet.y;
-			// let moveX2 = planet.X;
-			// let moveY2 = planet.Y;
-			// for(let i=0; i<=allPlanets.length-1; i++){
-			// 	if(allPlanets[i] != planet){
-			// 		if(planet.R != 0){
-			// 			// console.log(allPlanets[i].x);
-			// 			// console.log(allPlanets[i].mass);
-			// 			 planet.R = sqrt(Math.pow((allPlanets[i].x - predX2),2) + Math.pow((allPlanets[i].y - predY2),2));
-			// 			 planet.Force = G*(allPlanets[i].mass)/Math.pow(planet.R,2);
-			// 			 // console.log(this.Force);
-			// 			 // console.log(this);
-			// 			 // console.log(this.Force);
-			// 			 moveX2 += (allPlanets[i].x - predX2)*planet.Force/(planet.R);
-			// 			 moveY2 += (allPlanets[i].y - predY2)*planet.Force/(planet.R);
-			// 		}
-					
-			// 	}
-			// }
-			// moveX -= moveX2;
-			// moveY -= moveY2;
-			// console.log(this.X);
 			predX += moveX;
 			predY += moveY;
 			if(j%2 == 0){
