@@ -189,8 +189,8 @@ function mouseDragged(event){
 					allPlanets[i].predArray[j].y += screen_y/ZOOM;
 				}
 				
-				imgW += screen_x/(ZOOM*5000);
-				imgH += screen_y/(ZOOM*5000);
+				imgW += screen_x/(ZOOM*100000);
+				imgH += screen_y/(ZOOM*100000);
 			}
 		}
 
