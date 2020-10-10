@@ -3,8 +3,6 @@ var container_height = document.getElementById("container").offsetHeight;
 
 const G = 1;
 const M = 1;    			///Multiplicator
-const THICKNES = 0.4;		/// Thicknes of trail
-const HISTORY = 100;		/// How long is trail
 const N_TIME = 2;		/// What is normal time
 const NUM_MOVE = -1;		/// Zero planet for moving
 const VELOCITY_CHANGE = 100;	/// how much velocity will change with mouse
@@ -12,6 +10,7 @@ const PREDICTION = 1000;			/// prediction of moving
 const fr = 30;					/// framerate
 const OPTIMIZATION = 5;			/// optimization tails
 const SHD = 20;					/// FPS for details show (shd = show details)
+const THICKNESS = 0.5;			/// thicness of trail
 
 var fastUp = 2;					/// how fast up you want, 2 is normal
 var ZOOM = 0.1;			
@@ -29,7 +28,9 @@ var updateDetails = false;
 var detailShow = false;				/// to show details in update
 var shd = 0;				/// calculate fps for details Show
 var pauseGame = true;		/// enable pause game
-
+var thicness;		/// Thicknes of trail
+var trailLength = 100;		/// length of trail
+var trailHistory = trailLength;
 
 
 //Planet(diameter, mass);

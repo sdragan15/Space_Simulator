@@ -46,7 +46,7 @@ class Planet{
 			this.x += this.X;
 			this.y += this.Y;
 			// console.log(optim);
-			if(this.array.length < HISTORY && optim%OPTIMIZATION === 0){
+			if(this.array.length < trailHistory && optim%OPTIMIZATION === 0){
 				this.array.push({x: this.x, y: this.y});
 				// console.log(this.array[0].x);
 				
@@ -76,7 +76,7 @@ class Planet{
 			noStroke();
 			push();
 			emissiveMaterial(this.a);
-			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
+			ellipse(tx,ty,this.radius*THICKNESS,this.radius*THICKNESS);
 			pop();
 		}
 		
@@ -174,7 +174,7 @@ class Planet{
 			noStroke();
 			push();
 			emissiveMaterial(this.a);
-			ellipse(tx,ty,this.radius*THICKNES,this.radius*THICKNES);
+			ellipse(tx,ty,this.radius*THICKNESS,this.radius*THICKNESS);
 			pop();
 		}
 	}

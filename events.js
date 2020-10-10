@@ -184,6 +184,7 @@ function removeChilds(parent){
 }
 
 
+
 //// There goes all finished systems:
 var solarSys = document.getElementById('solar_sys');
 solarSys.addEventListener('click', addSolarSys);

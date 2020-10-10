@@ -25,6 +25,14 @@
 		
 	</div>
 
+	<div id="navigation">
+		<button class="nav_btn" onclick="slowTime()" ><<</button>
+		<button class="nav_btn" onclick="pauseTime()" >||</button>
+		<button class="nav_btn" onclick="speedUpTime()" >>></button>
+		<button class="nav_btn" onclick="normalTime()" >1x</button>
+		<button class="nav_btn" onclick="hideTrail()" >trail</button>
+	</div>
+
 	<div id="create_planet">
 			<input id="name" class="create_btns" type="text" placeholder="name"> <br>
 			<input id="mass" class="create_btns" type="text" placeholder="mass"> <br>
@@ -36,13 +44,14 @@
 	</div>
 
 	<div id="container">
-		<!-- <img src="http://127.0.0.1:8887/fuckyou.jpg" id="p5_loading" class="loading"> -->
-		<img src="images/loading.jpg" id="p5_loading" class="loading">	
+		<img src="http://127.0.0.1:8887/fuckyou.jpg" id="p5_loading" class="loading">
+		<!-- <img src="images/loading.jpg" id="p5_loading" class="loading">	 -->
 
 
 	</div>
 	
 
+	<script src="navigation.js"></script>
 	<script src="events.js"></script>
 	<script src="zoom.js"></script>
 	<script src="sun.js"></script>

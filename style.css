@@ -127,9 +127,6 @@ body{
 }
 
 
-
-
-
 #btn_meni{
 	position: fixed;
 	margin: 30px;
@@ -137,3 +134,20 @@ body{
 	height: 30px;
 }
 
+/*Navigation bar:*/
+#navigation{
+	display: flex;
+	position: fixed;
+	bottom: 10px;
+	/*background-color: red;*/
+	flex-direction: row;
+	width: 100%;
+	margin: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav_btn{
+	font-size: 110%;
+	margin: 10px;
+}
