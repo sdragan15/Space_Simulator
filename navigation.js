@@ -37,9 +37,11 @@ function normalTime(){
 function hideTrail(){
 	if(trailHistory == 0){
 		trailHistory = trailLength;
+		document.getElementById('trail_btn').style.background = '#86f7a4';
 	}
 	else{
 		trailHistory = 0;
+		document.getElementById('trail_btn').style.background = '#eb6f60';
 	}
 	for(let i=0; i<allPlanets.length; i++){
 		allPlanets[i].array = [];

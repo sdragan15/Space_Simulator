@@ -76,7 +76,7 @@ function showMeni(){
 }
 
 function showFinished(){
-	console.log(1245);
+	// console.log(1245);
 	meniDiv.style.display = 'none';
 	finishedDiv.style.display = 'flex';
 }

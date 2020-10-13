@@ -134,6 +134,10 @@ body{
 	height: 30px;
 }
 
+.loading{
+	z-index: 10;
+}
+
 /*Navigation bar:*/
 
 #navigation{
@@ -218,6 +222,7 @@ body{
 }
 
 #trail_btn{
+	background-color: #86f7a4;
 	font-size: 12px;
 	margin: 10px;
 	margin-right: 20px;
@@ -229,6 +234,7 @@ body{
     height: 22px;
     border: 2px solid;
     border-radius: 4px
+
 }
 
 /*///////////////////////////////*/
