@@ -125,12 +125,12 @@ function keyPressed(event) {
 
 
 	if(event.key == 's' || event.key == 'S'){			///slow down time
-		if(fastUp >=1){
-			fastUp--;
+		if(fastUp >= 1){
+			fastUp /= 2;
 		}// console.log(time);
 	}
 	else if(event.key == 'f' || event.key == 'F'){
-		fastUp++;
+		fastUp *= 2;
 	}
 
 

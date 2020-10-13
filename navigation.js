@@ -1,11 +1,16 @@
 function slowTime(){
 	if(fastUp >=1){
-		fastUp--;
+		fastUp /= 2;
 	}
+	document.getElementById('speed_btn').innerHTML = fastUp + 'x';
 }
 
 function speedUpTime(){
-	fastUp++;
+	if(fastUp < 250){
+		fastUp *= 2;
+		document.getElementById('speed_btn').innerHTML = fastUp + 'x';
+	}
+	
 }
 
 function pauseTime(){
@@ -26,6 +31,7 @@ function pauseTime(){
 
 function normalTime(){
 	fastUp = N_TIME;
+	document.getElementById('speed_btn').innerHTML = fastUp + 'x';
 }
 
 function hideTrail(){
