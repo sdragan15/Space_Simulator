@@ -135,6 +135,7 @@ body{
 }
 
 /*Navigation bar:*/
+
 #navigation{
 	display: flex;
 	position: fixed;
@@ -150,4 +151,56 @@ body{
 .nav_btn{
 	font-size: 110%;
 	margin: 10px;
+	height: 40px;
+	width: 40px;
 }
+
+.gg-play-button-r {
+	margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1.5));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 4px
+}
+
+.gg-play-pause-r {
+	margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1.5));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 4px
+}
+
+.gg-play-track-next-r {
+	margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1.5));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 4px
+}
+
+.gg-play-track-prev-r {
+	margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1.5));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 4px
+}
+
+/*///////////////////////////////*/

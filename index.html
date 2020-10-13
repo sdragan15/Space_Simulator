@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='https://css.gg/play-track-prev-r.css' rel='stylesheet'>
+	<link href='https://css.gg/play-track-next-r.css' rel='stylesheet'>
+	<link href='https://css.gg/play-button-r.css' rel='stylesheet'>
+	<link href='https://css.gg/play-pause-r.css' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="p5.js"></script>
 	<title>Gravity</title>
@@ -26,9 +30,9 @@
 	</div>
 
 	<div id="navigation">
-		<button class="nav_btn" onclick="slowTime()" ><<</button>
-		<button class="nav_btn" onclick="pauseTime()" >||</button>
-		<button class="nav_btn" onclick="speedUpTime()" >>></button>
+		<button class="gg-play-track-prev-r" onclick="slowTime()" ></button>
+		<button id="play_pause" class="gg-play-button-r"  onclick="pauseTime()" ></button>
+		<button class="gg-play-track-next-r" onclick="speedUpTime()" ></button>
 		<button class="nav_btn" onclick="normalTime()" >1x</button>
 		<button class="nav_btn" onclick="hideTrail()" >trail</button>
 	</div>
