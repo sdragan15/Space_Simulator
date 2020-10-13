@@ -30,7 +30,8 @@ var shd = 0;				/// calculate fps for details Show
 var pauseGame = true;		/// enable pause game
 var thicness;		/// Thicknes of trail
 var trailLength = 100;		/// length of trail
-var trailHistory = trailLength;
+var trailHistory = trailLength;		
+var lastClickedPlanet = -1;			///last clicked planet
 
 
 //Planet(diameter, mass);
@@ -108,8 +109,10 @@ function draw(){
 		// console.log(optim);
 	}
 	
-	
+
 	mousePossition();
+
+	// console.log(detailShow);
 
 }
 
@@ -233,7 +236,9 @@ function mousePressed(){
 		let absolutePositionY = allPlanets[i].y*ZOOM - (event.y - height/2);
 		if(mouseOnPlanet(absolutePositionX,absolutePositionY,allPlanets[i].radius)){
 			showDetails(allPlanets[i]);
-			detailShow = allPlanets[i];
+			detailShow = allPlanets[i];			/// last clicked planet
+			lastClickedPlanet = allPlanets[i];
+			document.getElementById('delete_btn').style.color = 'black';
 			break;
 		}
 	}

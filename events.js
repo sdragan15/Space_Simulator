@@ -102,7 +102,7 @@ function create(){
 }
 
 function makePlanet(){
-	console.log(shinePlanet.checked);
+	// console.log(shinePlanet.checked);
 	if(verify()){
 		allPlanets.push(new Planet(planetName.value,planetDiameter.value,planetMass.value));
 

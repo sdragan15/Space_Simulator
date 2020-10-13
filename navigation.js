@@ -47,3 +47,23 @@ function hideTrail(){
 		allPlanets[i].array = [];
 	}
 }
+
+
+function deletePlanet(){				/// delete last selected planet
+	// console.log(lastClickedPlanet);
+	for(let i=0; i<allPlanets.length; i++){
+		if(lastClickedPlanet == allPlanets[i]){
+			allPlanets.splice(i,1);
+			break;
+		}
+	}
+	for(let i=0; i<glowingPlanets.length; i++){
+		if(lastClickedPlanet == glowingPlanets[i]){
+			glowingPlanets.splice(i,1);
+			break;
+		}
+	}
+	lastClickedPlanet = -1;
+
+	document.getElementById('delete_btn').style.color = '#c2c2c2';
+}
