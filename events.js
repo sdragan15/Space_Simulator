@@ -36,6 +36,7 @@ function mousePossition(){
 var btnMeni = document.getElementById('btn_meni');
 var meniDiv = document.getElementById('meni');
 var createBtn = document.getElementById('btn_create');
+var createStarBtn = document.getElementById('btn_create_star');
 var gameDiv = document.getElementById('container');
 var createPlanet = document.getElementById('create_planet');
 var planetName = document.getElementById('name');
@@ -51,6 +52,7 @@ var startSim = document.getElementById('start_sim');
 
 
 var last = -1;			/// planets that are created
+var shineObj = false;
 
 // while(true){
 // 	console.log(planetColor);
@@ -59,6 +61,7 @@ var last = -1;			/// planets that are created
 btnMeni.addEventListener('click', showMeni);
 gameDiv.addEventListener('click', hideMeni);
 createBtn.addEventListener('click', create);
+createStarBtn.addEventListener('click', createStar);
 Done.addEventListener('click', makePlanet);
 finishedBtn.addEventListener('click', showFinished);
 
@@ -99,7 +102,15 @@ function hideMeni(){
 function create(){
 	createPlanet.style.display = 'block';
 	meniDiv.style.display = 'none';
+	shineObj = false;
 }
+
+function createStar(){
+	createPlanet.style.display = 'block';
+	meniDiv.style.display = 'none';
+	shineObj = true;
+}
+
 
 function makePlanet(){
 	// console.log(shinePlanet.checked);
@@ -111,7 +122,7 @@ function makePlanet(){
 		allPlanets[last].colour(planetColor.value,0.5);
 		allPlanets[last].move(0,0,0,0);
 		
-		if(shinePlanet.checked){
+		if(shineObj){
 			glowingPlanets.push(allPlanets[last]);
 		}
 
