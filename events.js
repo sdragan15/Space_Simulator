@@ -153,15 +153,27 @@ function canclePlanet(){				/// delete information when cancle btn is pressed
 
 function verify(){
 	if(planetName.value == ''){
-		alert('You must input planet name!');
+		alert('You must enter a name!');
+		return false;
+	}
+	else if(planetName.value.length > 20){
+		alert('Name must be under 20 characters!');
 		return false;
 	}
 	else if(Number(planetMass.value) != planetMass.value || Number(planetMass.value) == 0){
-		alert('Planet mass must be a number!');
+		alert('Mass must be a number!');
 		return false;
 	}
-	else if(Number(planetDiameter.value) != planetDiameter.value || Number(planetDiameter.value) == 0){
-		alert('Planet diameter must be a number!');
+	else if(Number(planetMass.value) > MAX_MASS){
+		alert('Maximum mass is 10^15');
+		return false;
+	}
+	else if(Number(planetDiameter.value) != planetDiameter.value || Number(planetDiameter.value) <= 0){
+		alert('Diameter must be a positive number!');
+		return false;
+	}
+	else if(Number(planetDiameter.value) > MAX_DIAMETER){
+		alert('Maximum diameter is 10^5');
 		return false;
 	}
 	

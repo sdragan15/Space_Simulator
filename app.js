@@ -11,6 +11,8 @@ const fr = 30;					/// framerate
 const OPTIMIZATION = 5;			/// optimization tails
 const SHD = 20;					/// FPS for details show (shd = show details)
 const THICKNESS = 0.5;			/// thicness of trail
+const MAX_MASS = 1000000000000000;
+const MAX_DIAMETER = 100000;
 
 var fastUp = 2;					/// how fast up you want, 2 is normal
 var ZOOM = 0.1;			
