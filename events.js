@@ -48,6 +48,7 @@ var shinePlanet = document.getElementById('shine');
 var finishedDiv = document.getElementById('finished');
 var finishedBtn = document.getElementById('btn_finished');
 var startSim = document.getElementById('start_sim');
+var cancleBtn = document.getElementById('cancle');
 
 
 
@@ -64,6 +65,7 @@ createBtn.addEventListener('click', create);
 createStarBtn.addEventListener('click', createStar);
 Done.addEventListener('click', makePlanet);
 finishedBtn.addEventListener('click', showFinished);
+cancleBtn.addEventListener('click', canclePlanet);
 
 
 function showMeni(){
@@ -135,6 +137,18 @@ function makePlanet(){
 		btnMeni.style.display = 'block';
 		pauseGame = true;
 	}
+}
+
+function canclePlanet(){				/// delete information when cancle btn is pressed
+		planetName.value = '';
+		planetDiameter.value = '';
+		planetMass.value = '';
+		planetColor.value = '#000000';
+		planetName.value = '';
+		createPlanet.style.display = 'none';
+		btnMeni.style.display = 'block';
+		pauseGame = true;
+
 }
 
 function verify(){

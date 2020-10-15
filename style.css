@@ -88,6 +88,24 @@ body{
 	font-size: 90%;
 }
 
+#btn_create{
+	background:#84e39d;
+	border: solid 1px black;
+	border-radius: 5px;
+}
+
+#btn_create_star{
+	background: #dbe36b;
+	border: solid 1px black;
+	border-radius: 5px;
+}
+
+#btn_finished{
+	background: #6bbde3;
+	border: solid 1px black;
+	border-radius: 5px;
+}
+
 #create_planet{
 	display: none;
 	background: rgb(255,255,255,0.2);
