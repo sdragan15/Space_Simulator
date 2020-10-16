@@ -55,6 +55,7 @@ var imgW;
 var imgH;		/// background width and height
 
 function preload(){
+	ambientSong = new Audio('http://127.0.0.1:8887/ambient.mp3');
 	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
 	earth = loadImage('http://127.0.0.1:8887/earth.png');
@@ -73,7 +74,7 @@ function setup(){
 	cvs.parent('container');
 	background(0, 0, 0);
 	frameRate(fr);
-	
+
 }
 
 

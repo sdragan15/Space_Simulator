@@ -70,6 +70,7 @@ cancleBtn.addEventListener('click', canclePlanet);
 
 function showMeni(){
 	if(!pause){
+		playAmbientSong();
 		meniDiv.style.display = 'flex';
 		btnMeni.style.display = 'none';
 		startSim.style.display = 'none';
