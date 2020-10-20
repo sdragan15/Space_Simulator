@@ -169,13 +169,21 @@ body{
 #navigation{
 	display: flex;
 	position: fixed;
-	bottom: 10px;
+	bottom: 0px;
 	/*background-color: red;*/
 	flex-direction: row;
 	width: 100%;
 	margin: 10px;
 	justify-content: center;
 	align-items: center;
+	opacity: 0;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	transition: 0.2s;
+}
+
+#navigation:hover{
+	opacity: 1;
 }
 
 .nav_btn{
