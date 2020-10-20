@@ -293,9 +293,9 @@ body{
 /*/*settings//////////////////////////////////////*/
 
 #settings_flex{
-	/*z-index: -1;*/
+	z-index: 12;
 	position: fixed;
-	display: flex;
+	display: none;
 	top: 0px;
 	left: 0px;
 	width: 100%;
@@ -303,6 +303,8 @@ body{
 	align-items: center;
 	padding: 10px;
 	justify-content: center;
+	background: black;
+	opacity: 0.95;
 }
 
 #settings{
@@ -332,14 +334,16 @@ body{
 }
 
 #settings_div{
+	background: rgb(0,0,0);
 	padding: 10px;
-	background: red;
+	/*background: white;*/
 	position: fixed;
 	display: flex;
 	min-height: 200px;
 	width: 80vw;
-	border: solid 1px black;
+	border: solid 1px white;
 	border-radius: 10px;
+	color: white;
 }
 
 #end_settings{
@@ -355,14 +359,21 @@ body{
 
 #apply_settings{
 	background: blue;
-	width: 100px;
+	padding: 3px 10px 3px 10px;
 	text-align: center;
+	background: #1d6e1b;
+	border-radius: 3px;
+	font-size: 20px;
+	border: 1px solid white;
 }
 
 #cancel_settings{
-	background: yellow;
-	width: 100px;
+	background: #701b1b;
+	padding: 3px 10px 3px 10px;
 	text-align: center;
+	border-radius: 3px;
+	font-size: 20px;
+	border: 1px solid white;
 }
 
 #trail_slider{
@@ -372,6 +383,7 @@ body{
 
 #slider_value{
 	margin: 10px;
+	height: 20px;
 }
 
 /*////////////////////////////////////////*/

@@ -31,9 +31,9 @@ var detailShow = false;				/// to show details in update
 var shd = 0;				/// calculate fps for details Show
 var pauseGame = true;		/// enable pause game
 var thicness;		/// Thicknes of trail
-var trailLength = 100;		/// length of trail
-var trailHistory = trailLength;		
+var trailHistory = trailSlider.value;		/// length of trail		
 var lastClickedPlanet = -1;			///last clicked planet
+var movePlanets = true;			/// is it allowed to move planets
 
 
 //Planet(diameter, mass);
@@ -81,7 +81,7 @@ function setup(){
 
 function draw(){
 
-	// console.log(frameRate()); 
+	// console.log(trailSlider.value); 
 
 	image(backImage,imgW,imgH);
 	
@@ -114,6 +114,9 @@ function draw(){
 	
 
 	mousePossition();
+
+
+	updateSlider();	   /// change value of slider
 
 	// console.log(detailShow);
 
@@ -169,49 +172,53 @@ function keyReleased(){
 
 
 function mouseDragged(event){
-	dragged = true;
+	if(movePlanets){
+		dragged = true;
 
-	screen_x = event.movementX;
-	screen_y = event.movementY;
-	if(changeVelocity){
-		if(numMove != NUM_MOVE){									/// Changing velocity of planets
-			allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
-			allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
-			allPlanets[numMove].calculPrediction(centerPlanet);
-			showDetails(allPlanets[numMove]);
-		}
-	}
-	else{
-		if(locked && numMove == NUM_MOVE){
-			for(let i=0; i<allPlanets.length; i++){
-				allPlanets[i].x += screen_x/ZOOM;
-				allPlanets[i].y += screen_y/ZOOM;
-				for(let j=0; j<allPlanets[i].array.length; j++){
-					allPlanets[i].array[j].x += screen_x/ZOOM;
-					allPlanets[i].array[j].y += screen_y/ZOOM;
-				}
-
-				for(let j=0; j<allPlanets[i].predArray.length; j++){
-					allPlanets[i].predArray[j].x += screen_x/ZOOM;
-					allPlanets[i].predArray[j].y += screen_y/ZOOM;
-				}
-				
-				imgW += screen_x/(ZOOM*100000);
-				imgH += screen_y/(ZOOM*100000);
+		screen_x = event.movementX;
+		screen_y = event.movementY;
+		if(changeVelocity){
+			if(numMove != NUM_MOVE){									/// Changing velocity of planets
+				allPlanets[numMove].X += event.movementX/(ZOOM*VELOCITY_CHANGE);
+				allPlanets[numMove].Y += event.movementY/(ZOOM*VELOCITY_CHANGE);
+				allPlanets[numMove].calculPrediction(centerPlanet);
+				showDetails(allPlanets[numMove]);
 			}
 		}
+		else{
+			if(locked && numMove == NUM_MOVE){
+				for(let i=0; i<allPlanets.length; i++){
+					allPlanets[i].x += screen_x/ZOOM;
+					allPlanets[i].y += screen_y/ZOOM;
+					for(let j=0; j<allPlanets[i].array.length; j++){
+						allPlanets[i].array[j].x += screen_x/ZOOM;
+						allPlanets[i].array[j].y += screen_y/ZOOM;
+					}
 
-		if(numMove != NUM_MOVE){
-			allPlanets[numMove].x += event.movementX/ZOOM;
-			allPlanets[numMove].y += event.movementY/ZOOM;
-			// console.log(ZOOM);
+					for(let j=0; j<allPlanets[i].predArray.length; j++){
+						allPlanets[i].predArray[j].x += screen_x/ZOOM;
+						allPlanets[i].predArray[j].y += screen_y/ZOOM;
+					}
+					
+					imgW += screen_x/(ZOOM*100000);
+					imgH += screen_y/(ZOOM*100000);
+				}
+			}
+
+			if(numMove != NUM_MOVE){
+				allPlanets[numMove].x += event.movementX/ZOOM;
+				allPlanets[numMove].y += event.movementY/ZOOM;
+				// console.log(ZOOM);
+			}
 		}
 	}
+		
 	
 }
 
 
 function mousePressed(){
+
 	if(event.button == 0){
 		locked = true;						/// For moving screen
 

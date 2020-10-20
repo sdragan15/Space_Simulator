@@ -55,6 +55,7 @@ class Planet{
 				this.array.splice(0, 1);
 			}
 			// console.log(this.array[1]);
+			// console.log(trailHistory);
 		}
 		
 	}

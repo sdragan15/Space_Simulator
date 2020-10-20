@@ -36,7 +36,7 @@ function normalTime(){
 
 function hideTrail(){
 	if(trailHistory == 0){
-		trailHistory = trailLength;
+		trailHistory = trailSlider.value;
 		document.getElementById('trail_btn').style.background = '#86f7a4';
 	}
 	else{
