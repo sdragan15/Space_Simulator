@@ -281,3 +281,12 @@ body{
 
 
 /*///////////////////////////////*/
+
+#mute_btn{
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	border: solid 1px black;
+	border-radius: 3px;
+	width: 60px;
+}
