@@ -7,6 +7,7 @@
 	<link href='https://css.gg/play-button-r.css' rel='stylesheet'>
 	<link href='https://css.gg/play-pause-r.css' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="p5.js"></script>
 	<!-- <script src="p5.sound.js"></script> -->
 	<title>Gravity</title>
@@ -24,7 +25,23 @@
 		<button id="btn_finished" class="meni_btns">Finished systems</button>
 	</div>
 
-	<button id="mute_btn">mute</button>
+	<div id="settings_flex">
+		<div id="settings_div">
+			<input id="trail_slider" type="range" min="10" max="1000" value="100">
+			<div id="slider_value">trail: </div>
+			<div id="end_settings">
+				<div id="apply_settings">apply</div>
+				<div id="cancel_settings">cancel</div>
+			</div>
+		</div>
+		
+	</div>
+		
+
+	<div id="settings">
+		<div id="mute_btn">mute</div>
+		<div id="settings_btn">settings</div>
+	</div>
 	
 	<div id="finished">
 		<button id="solar_sys" class="meni_btns">Solar system</button>
@@ -61,6 +78,7 @@
 	</div>
 	
 
+	<script src="settings.js"></script>
 	<script src="systems.js"></script>
 	<script src="ambientsong.js"></script>
 	<script src="navigation.js"></script>
