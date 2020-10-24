@@ -20,7 +20,7 @@ var locked = false;
 var screen_x = 0;
 var screen_y = 0;
 var pause = false;			/// Pause the game
-var numMove = NUM_MOVE;			/// Number of planets you want to move
+var numMove = NUM_MOVE;			/// Number of planet you want to move
 var changeVelocity = false;		/// Change velocity of planets with mouse
 var saveX;
 var saveY;						/// save position of planets before changing velocity
@@ -34,6 +34,9 @@ var thicness;		/// Thicknes of trail
 var trailHistory = trailSlider.value;		/// length of trail		
 var lastClickedPlanet = -1;			///last clicked planet
 var movePlanets = true;			/// is it allowed to move planets
+var saveString = []; 			/// saved data to json
+var timer = 0;					//// timer
+var saveInterval = 10000;		///	save game on every x milisecunds
 
 
 //Planet(diameter, mass);
@@ -55,6 +58,8 @@ var imgW;
 var imgH;		/// background width and height
 
 function preload(){
+
+	reloadSave();
 	ambientSong = new Audio('http://127.0.0.1:8887/ambient.mp3');
 	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
@@ -63,6 +68,7 @@ function preload(){
 	// font = loadFont('fonts/OpenSans-Regular.ttf');
 	// backImage = loadImage('images/skyBack.png');			/// for net probe
 	// earth = loadImage('images/earth.png');
+	// ambientSong = new Audio('music/ambient.mp3');
 
 	imgW = (backImage.width - container_width);
 	imgH = (backImage.height - container_height);
@@ -120,13 +126,19 @@ function draw(){
 
 	// console.log(detailShow);
 
+	if(millis() >= saveInterval + timer){
+		timer = millis();
+		autoSave();
+		console.log('saved');
+	}
+
 }
 
 
 
 
 
-function keyPressed(event) {	
+function keyPressed(event) {
 	if(event.key == 'Control'){					/// Changing velocity of planets with mouse
 		changeVelocity = true;
 		// console.log(121);

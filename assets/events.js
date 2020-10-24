@@ -73,7 +73,6 @@ function showMeni(){
 		playAmbientSong();
 		meniDiv.style.display = 'flex';
 		btnMeni.style.display = 'none';
-		startSim.style.display = 'none';
 		pauseGame = false;					/// disable pausing game
 	}
 	else{
