@@ -106,9 +106,15 @@ function hideMeni(){				/// hide everyting when game div is pressed
 }
 
 function create(){
-	createPlanet.style.display = 'block';
-	meniDiv.style.display = 'none';
-	shineObj = false;
+	if(glowingPlanets.length == 0){
+		alert("First need to create Star!");
+	}
+	else{
+		createPlanet.style.display = 'block';
+		meniDiv.style.display = 'none';
+		shineObj = false;	
+		console.log(glowingPlanets);
+	}
 }
 
 function createStar(){

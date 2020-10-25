@@ -93,7 +93,7 @@ function draw(){
 	
 	// background(0, 1, 43);
 	
-	ambientLight(40,40,40);
+	ambientLight(30,30,30);
 
 	for(let i=0; i<glowingPlanets.length; i++){
 		pointLight(255,255,255,glowingPlanets[i].x*ZOOM,glowingPlanets[i].y*ZOOM, 0);
