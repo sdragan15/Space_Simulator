@@ -66,4 +66,6 @@ function deletePlanet(){				/// delete last selected planet
 	lastClickedPlanet = -1;
 
 	document.getElementById('delete_btn').style.color = '#c2c2c2';
+
+	autoSave();
 }

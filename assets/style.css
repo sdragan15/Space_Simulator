@@ -27,6 +27,7 @@ body{
 
 
 #meni{
+	z-index: 15;
 	display: none;
 	flex-wrap: wrap;
 	flex-direction: column;
@@ -42,6 +43,10 @@ body{
 	background: rgb(255,255,255,0.2);
 	position: fixed;
 	height: 100%;
+}
+
+#btn_clear{
+	margin-top: auto;
 }
 
 #details{
@@ -75,12 +80,13 @@ body{
 	margin-bottom: 10px;
 	height: 40px;
 	font-size: 90%;
+	border: solid 1px black;
+	border-radius: 5px;
 }
 
 #btn_create{
 	background:#84e39d;
-	border: solid 1px black;
-	border-radius: 5px;
+	
 }
 
 #btn_create_star{

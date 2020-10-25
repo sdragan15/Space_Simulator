@@ -5,6 +5,7 @@ function autoSave(){
 
 	localStorage.setItem('autosave',saveString);
 	localStorage.setItem('glowsave',glowSave);
+	console.log('saved');
 }
 
 function reloadSave(){
@@ -47,8 +48,8 @@ function makeSavedSystem(planet,glow){
 		for(let i=0; i<glow.length; i++){
 			if(planet.name == glow[i].name && planet.x == glow[i].x && planet.y == glow[i].y){
 				glowingPlanets.push(allPlanets[last]);
-				console.log(planet);
-				console.log(glow[i]);
+				// console.log(planet);
+				// console.log(glow[i]);
 			}
 			
 		}

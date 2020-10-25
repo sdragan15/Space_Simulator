@@ -52,4 +52,6 @@ function addSolarSys(){
 	finishedDiv.style.display = 'none';
 	btnMeni.style.display = 'block';
 	pauseGame = true;
+
+	autoSave();
 }

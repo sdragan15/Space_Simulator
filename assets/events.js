@@ -49,6 +49,7 @@ var finishedDiv = document.getElementById('finished');
 var finishedBtn = document.getElementById('btn_finished');
 var startSim = document.getElementById('start_sim');
 var cancleBtn = document.getElementById('cancle');
+var clearAll = document.getElementById('btn_clear');
 
 
 
@@ -66,6 +67,7 @@ createStarBtn.addEventListener('click', createStar);
 Done.addEventListener('click', makePlanet);
 finishedBtn.addEventListener('click', showFinished);
 cancleBtn.addEventListener('click', canclePlanet);
+clearAll.addEventListener('click', clearCanvas);
 
 
 function showMeni(){
@@ -115,6 +117,11 @@ function createStar(){
 	shineObj = true;
 }
 
+function clearCanvas(){
+	allPlanets = [];
+	glowingPlanets = [];
+	autoSave();
+}
 
 function makePlanet(){
 	// console.log(shinePlanet.checked);

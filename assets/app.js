@@ -129,7 +129,6 @@ function draw(){
 	if(millis() >= saveInterval + timer){
 		timer = millis();
 		autoSave();
-		console.log('saved');
 	}
 
 }
@@ -196,6 +195,7 @@ function mouseDragged(event){
 				allPlanets[numMove].calculPrediction(centerPlanet);
 				showDetails(allPlanets[numMove]);
 			}
+			autoSave();
 		}
 		else{
 			if(locked && numMove == NUM_MOVE){
@@ -282,6 +282,7 @@ function doubleClicked(){
 			centerPlanet = allPlanets[i];
 			for(let j=0; j<allPlanets.length; j++){
 				allPlanets[j].array = [];
+				autoSave();
 			}
 
 			return;
@@ -293,7 +294,11 @@ function doubleClicked(){
 function mouseReleased() {
   locked = false;
   
-  numMove = NUM_MOVE;
+  if(numMove != NUM_MOVE){
+  	numMove = NUM_MOVE;
+  	autoSave();					//// when planets are places somewhere	
+  }
+  
 
 	let br = 0;
   for(let i=0; i<allPlanets.length; i++){			/// show details and hide it when clicked on background

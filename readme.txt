@@ -13,3 +13,5 @@ When pause is pressed, if you press ctrl and dragg planet, you change its veloci
 Double click on planet to set it as center planet.
 
 If more trail are turn on on the same time, it might drop fps
+
+Autosave is set on every 10 secounds
