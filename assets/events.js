@@ -50,7 +50,10 @@ var finishedBtn = document.getElementById('btn_finished');
 var startSim = document.getElementById('start_sim');
 var cancleBtn = document.getElementById('cancle');
 var clearAll = document.getElementById('btn_clear');
-
+var tutorialBtn = document.getElementById('btn_tutorial');
+var videoTutorial = document.getElementById('video_tutorial');
+var closeTut = document.getElementById('close_tut');
+var videoTut = document.getElementById('tut_video');
 
 
 var last = -1;			/// planets that are created
@@ -68,6 +71,10 @@ Done.addEventListener('click', makePlanet);
 finishedBtn.addEventListener('click', showFinished);
 cancleBtn.addEventListener('click', canclePlanet);
 clearAll.addEventListener('click', clearCanvas);
+tutorialBtn.addEventListener('click', startTutorial);
+videoTut.addEventListener('click', playPause);
+closeTut.addEventListener('click',closeTutorial);
+
 
 
 function showMeni(){
@@ -103,6 +110,8 @@ function hideMeni(){				/// hide everyting when game div is pressed
 		createPlanet.style.display = 'none';
 
 	finishedDiv.style.display = 'none';
+
+
 }
 
 function create(){
@@ -113,7 +122,7 @@ function create(){
 		createPlanet.style.display = 'block';
 		meniDiv.style.display = 'none';
 		shineObj = false;	
-		console.log(glowingPlanets);
+		// console.log(glowingPlanets);
 	}
 }
 
@@ -235,5 +244,26 @@ function removeChilds(parent){
 	}
 }
 
+function startTutorial(){
+	videoTutorial.style.display = 'block';
+	meniDiv.style.display = 'none';
+	
+}
+
+function playPause(){
+	if(this.paused){
+		this.play();	
+	}
+	else{
+		this.pause();
+	}
+	this.loop = true;
+
+}
+
+function closeTutorial(){
+	videoTutorial.style.display = 'none';
+	videoTut.pause();
+}
 
 

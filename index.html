@@ -19,6 +19,7 @@
 		<button id="btn_create" class="meni_btns">Create Planet</button> 
 		<button id="btn_create_star" class="meni_btns">Create Star</button> 
 		<button id="btn_finished" class="meni_btns">Finished systems</button>
+		<button id="btn_tutorial" class="meni_btns">Tutorial</button>
 		<button id="btn_clear" class="meni_btns">Clear all</button>
 	</div>
 
@@ -58,7 +59,7 @@
 	</div>
 
 	<div id="create_planet">
-			<input id="name" class="create_btns" type="text" placeholder="name"> <br>
+			<input id="name" class="create_btns" type="text" placeholder="name" autocomplete = "off"> <br>
 			<input id="mass" class="create_btns" type="text" placeholder="mass"> <br>
 			<input id="diameter" class="create_btns" type="text" placeholder="diameter"> <br>
 			<input id="color_input" class="create_btns" type="color"> <br> <br>
@@ -68,8 +69,15 @@
 
 
 	<div id="container">
-		<img src="http://127.0.0.1:8887/fuckyou.jpg" id="p5_loading" class="loading">
-		<!-- <img src="images/loading.jpg" id="p5_loading" class="loading">	 -->
+		<img src="http://127.0.0.1:8887/loadingImage.png" id="p5_loading" class="loading">
+		<!-- <img src="images/loadingImage.jpg" id="p5_loading" class="loading">	 -->
+		<div id="video_tutorial">
+			<video id="tut_video">
+				<source src="http://127.0.0.1:8887/loadvideo.mp4" type="video/mp4">
+			</video>
+			<button id="close_tut">Close</button>
+		</div>
+		
 
 
 	</div>
