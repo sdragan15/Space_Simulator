@@ -33,6 +33,13 @@ body{
 	margin-top: auto;
 }
 
+.credit{
+	/*margin-top: auto;*/
+	font-size: 15px;
+	color: white;
+	margin: 10px;
+}
+
 #details{
 	display: flex;
 	flex-wrap: wrap;
@@ -405,10 +412,12 @@ body{
 #close_tut{
 	position: absolute;
 	bottom: 20px;
-	right: 20px;
+	left: 20px;
 	border-radius: 5px;
 	border: solid black 4px;
 	font-size: 20px;
 	/*width: 50px;
 	height: 30px;*/
 }
+
+/*/////////////////////////////////////////////*/

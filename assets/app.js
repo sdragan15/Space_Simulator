@@ -60,6 +60,7 @@ var imgH;		/// background width and height
 function preload(){
 
 	reloadSave();
+	
 	ambientSong = new Audio('http://127.0.0.1:8887/ambient.mp3');
 	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
 	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
@@ -212,8 +213,8 @@ function mouseDragged(event){
 						allPlanets[i].predArray[j].y += screen_y/ZOOM;
 					}
 					
-					imgW += screen_x/(ZOOM*100000);
-					imgH += screen_y/(ZOOM*100000);
+					// imgW += screen_x/(ZOOM*100000);
+					// imgH += screen_y/(ZOOM*100000);
 				}
 			}
 
