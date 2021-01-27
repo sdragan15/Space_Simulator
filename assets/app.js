@@ -61,15 +61,15 @@ function preload(){
 
 	reloadSave();
 	
-	ambientSong = new Audio('http://127.0.0.1:8887/ambient.mp3');
-	font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
-	backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
-	earth = loadImage('http://127.0.0.1:8887/earth.png');
+	// ambientSong = new Audio('http://127.0.0.1:8887/ambient.mp3');
+	// font = loadFont('http://127.0.0.1:8887/OpenSans-Regular.ttf');
+	// backImage = loadImage('http://127.0.0.1:8887/skyBack.png');
+	// earth = loadImage('http://127.0.0.1:8887/earth.png');
 
-	// font = loadFont('fonts/OpenSans-Regular.ttf');
-	// backImage = loadImage('images/skyBack.png');			/// for net probe
-	// earth = loadImage('images/earth.png');
-	// ambientSong = new Audio('music/ambient.mp3');
+	font = loadFont('fonts/OpenSans-Regular.ttf');
+	backImage = loadImage('images/skyBack.png');			/// for net probe
+	earth = loadImage('images/earth.png');
+	ambientSong = new Audio('music/ambient.mp3');
 
 	imgW = (backImage.width - container_width);
 	imgH = (backImage.height - container_height);
